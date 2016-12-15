@@ -6,7 +6,7 @@ require __DIR__ . '/config.php';
 $instagram = new \Instagram\Instagram();
 $instagram->setVerifyPeer(false);
 
-$sum = 20 * count($array);
+$sum = 10 * count($array);
 
 $pb = new \ProgressBar\Manager(0, $sum, 80, '=', '-', '|');
 $a = 0;
@@ -18,7 +18,7 @@ try {
     foreach ($array as $item) {
 
         $hashTagFeed = $instagram->getTagFeed($item);
-        $items = array_slice($hashTagFeed->getItems(), 0, 20);
+        $items = array_slice($hashTagFeed->getItems(), 0, 10);
 
         foreach ($items as $hashTagFeedItem) {
 
@@ -30,7 +30,7 @@ try {
             $instagram->likeMedia($hashTagFeedItem->getID());
 
             $pb->update($a++);
-            sleep(random_int(4, 9));
+            sleep(random_int(8, 16));
         }
     }
 
