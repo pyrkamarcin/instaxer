@@ -26,7 +26,9 @@ try {
             $likeCount = $hashTagFeedItem->getLikeCount();
             $commentCount = $hashTagFeedItem->getCommentCount();
 
-            $instagram->likeMedia($hashTagFeedItem);
+            var_dump($hashTagFeedItem);
+
+//            $instagram->likeMedia($hashTagFeedItem);
 
             $pb->update($a++);
             sleep(random_int(4, 9));
