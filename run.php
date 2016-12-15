@@ -4,6 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config.php';
 
 $instagram = new \Instagram\Instagram();
+$instagram->setVerifyPeer(false);
 
 $sum = 20 * count($array);
 
