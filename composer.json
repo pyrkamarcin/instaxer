@@ -1,0 +1,17 @@
+{
+  "name": "jetalone/instaxer",
+  "description": "",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marcin Pyrka",
+      "email": "pyrka.marcin@gmail.com"
+    }
+  ],
+  "require": {
+    "liamcottle/instagram-sdk-php": "^1.0",
+    "guiguiboy/PHP-CLI-Progress-Bar": "dev-master",
+    "roave/security-advisories": "dev-master"
+  }
+}
