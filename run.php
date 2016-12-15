@@ -1,26 +1,9 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . 'config.php';
+require __DIR__ . '/config.php';
 
 $instagram = new \Instagram\Instagram();
-
-$array = [
-    'topmodelpolska',
-    'sensual_shots',
-    'sensual_shots_',
-    'bravogreatphoto',
-    'boudiorphotography',
-    'beautyandboudior',
-    'portretpage',
-    'portraitvision',
-    'portrait_vision',
-    'pursuitofportraits',
-    'majestic_people',
-    'portraitfestival',
-    'hunterportrait',
-    'portraitmag'
-];
 
 $sum = 20 * count($array);
 
