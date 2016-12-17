@@ -30,7 +30,7 @@ try {
             $instagram->likeMedia($hashTagFeedItem->getID());
 
             $pb->update($a++);
-            sleep(random_int(8, 16));
+            sleep(random_int(8, 10));
         }
     }
 
