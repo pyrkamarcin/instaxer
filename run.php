@@ -28,11 +28,12 @@ try {
             $likeCount = $hashTagFeedItem->getLikeCount();
             $commentCount = $hashTagFeedItem->getCommentCount();
 
-
-            $instagram->likeMedia($hashTagFeedItem->getID());
+            if ($hashTagFeedItem->isImage()) {
+                $instagram->likeMedia($hashTagFeedItem->getID());
+                sleep(random_int(2, 6));
+            }
 
             $pb->update($a++);
-            sleep(random_int(2, 6));
         }
     }
 
