@@ -6,7 +6,10 @@ require __DIR__ . '/config.php';
 $instagram = new \Instagram\Instagram();
 $instagram->setVerifyPeer(false);
 
-$sum = 4 * count($array);
+$counter = 8;
+
+
+$sum = $counter * count($array);
 
 $pb = new \ProgressBar\Manager(0, $sum, 80, '=', '-', '|');
 $a = 0;
@@ -18,7 +21,7 @@ try {
     foreach ($array as $item) {
 
         $hashTagFeed = $instagram->getTagFeed($item);
-        $items = array_slice($hashTagFeed->getItems(), 0, 4);
+        $items = array_slice($hashTagFeed->getItems(), 0, $counter);
 
         foreach ($items as $hashTagFeedItem) {
 
