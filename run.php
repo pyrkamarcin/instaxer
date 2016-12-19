@@ -6,7 +6,7 @@ require __DIR__ . '/config.php';
 $instagram = new \Instagram\Instagram();
 $instagram->setVerifyPeer(false);
 
-$counter = 5;
+$counter = 2;
 
 $sum = $counter * count($array);
 
@@ -30,7 +30,7 @@ try {
 
             if ($hashTagFeedItem->isImage()) {
                 $instagram->likeMedia($hashTagFeedItem->getID());
-                sleep(random_int(2, 6));
+                sleep(random_int(5, 7));
             }
 
             $pb->update($a++);
