@@ -29,6 +29,7 @@ try {
             $commentCount = $hashTagFeedItem->getCommentCount();
 
             if ($hashTagFeedItem->isImage()) {
+                $instagram->commentOnMedia($hashTagFeedItem->getID(), ':)');
                 $instagram->likeMedia($hashTagFeedItem->getID());
                 sleep(random_int(4, 7));
             }
