@@ -6,7 +6,7 @@ require __DIR__ . '/config.php';
 $instagram = new \Instagram\Instagram();
 $instagram->setVerifyPeer(false);
 
-$counter = 5;
+$counter = 8;
 
 $sum = $counter * count($array);
 
@@ -29,7 +29,7 @@ try {
             $commentCount = $hashTagFeedItem->getCommentCount();
 
             if ($hashTagFeedItem->isImage()) {
-                $instagram->commentOnMedia($hashTagFeedItem->getID(), ':)');
+//                $instagram->commentOnMedia($hashTagFeedItem->getID(), ':)');
                 $instagram->likeMedia($hashTagFeedItem->getID());
                 sleep(random_int(4, 7));
             }
