@@ -6,7 +6,7 @@ require __DIR__ . '/config.php';
 $instagram = new \Instagram\Instagram();
 $instagram->setVerifyPeer(false);
 
-$counter = 3;
+$counter = 5;
 
 $sum = $counter * count($array);
 
