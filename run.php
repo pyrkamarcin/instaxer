@@ -6,21 +6,23 @@ require __DIR__ . '/config.php';
 $instagram = new \Instagram\Instagram();
 $instagram->setVerifyPeer(false);
 
-$counter = 8;
+$counter = 250;
+$long = 5;
 
-$sum = $counter * count($array);
 
-$pb = new \ProgressBar\Manager(0, $sum, 80, '=', '-', '|');
+$pb = new \ProgressBar\Manager(0, ($counter * $long) - 1, 80, '=', '-', '>');
 $a = 0;
 
 try {
 
     $instagram->login($user1, $pass1);
 
-    foreach ($array as $item) {
+    for ($c = 0; $c < $counter; $c++) {
+
+        $item = $array[mt_rand(0, count($array) - 1)];
 
         $hashTagFeed = $instagram->getTagFeed($item);
-        $items = array_slice($hashTagFeed->getItems(), 0, $counter);
+        $items = array_slice($hashTagFeed->getItems(), 0, $long);
 
         foreach ($items as $hashTagFeedItem) {
 
@@ -29,9 +31,8 @@ try {
             $commentCount = $hashTagFeedItem->getCommentCount();
 
             if ($hashTagFeedItem->isImage()) {
-//                $instagram->commentOnMedia($hashTagFeedItem->getID(), ':)');
                 $instagram->likeMedia($hashTagFeedItem->getID());
-                sleep(random_int(4, 7));
+                sleep(random_int(2, 5));
             }
 
             $pb->update($a++);
