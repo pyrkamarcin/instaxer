@@ -37,6 +37,7 @@ try {
 
             $pb->update($a++);
         }
+        sleep(random_int(1, 5));
     }
 
 } catch (Exception $e) {
