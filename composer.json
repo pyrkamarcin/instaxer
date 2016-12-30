@@ -1,7 +1,7 @@
 {
-  "name": "jetalone/instaxer",
-  "description": "",
-  "minimum-stability": "dev",
+  "name": "pyrkamarcin/instaxer",
+  "description": "Small script to test Instagram PHP SDK libray.",
+  "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
     {
