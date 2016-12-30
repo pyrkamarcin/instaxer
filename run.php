@@ -5,7 +5,7 @@ require __DIR__ . '/config.php';
 
 try {
 
-    $instaxer = new \Instaxer\Instaxer($user1, $pass1);
+    $instaxer = new \Instaxer\Instaxer($user1, $pass1, 20, 5);
     $instaxer->run($array);
 
 } catch (Exception $e) {
