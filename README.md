@@ -1,4 +1,8 @@
 # instaxer
+
+[![Code Climate](https://codeclimate.com/github/pyrkamarcin/instaxer/badges/gpa.svg)](https://codeclimate.com/github/pyrkamarcin/instaxer)
+[![Build Status](https://travis-ci.org/pyrkamarcin/instaxer.svg?branch=master)](https://travis-ci.org/pyrkamarcin/instaxer)
+
 Small script to test Instagram PHP SDK libray
 
 ## Install
