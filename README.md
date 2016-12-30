@@ -3,21 +3,27 @@ Small script to test Instagram PHP SDK libray
 
 ## Install
 
-``
+`
 git clone https://github.com/pyrkamarcin/instaxer
+`
 
+`
 cd instaxer
+`
 
+`
 composer install
+`
 
+`
 cp config.php.example config.php
-``
+`
 
 ## Run
 
-``
+`
 php run.php
-``
+`
 
 ## Legal
 
