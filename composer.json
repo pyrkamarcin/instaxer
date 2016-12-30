@@ -9,6 +9,11 @@
       "email": "pyrka.marcin@gmail.com"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "Instaxer\\": "src/Instaxer"
+    }
+  },
   "require": {
     "liamcottle/instagram-sdk-php": "^1.0",
     "guiguiboy/PHP-CLI-Progress-Bar": "dev-master",
