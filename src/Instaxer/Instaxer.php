@@ -69,14 +69,12 @@ class Instaxer
 
                 echo 'User: ' . $user->getUsername() . ' ';
 
-                var_dump($user->getFollowingCount());
-
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
 
                 echo '(' . $likeCount . '/' . $commentCount . ') ';
 
-                if ($likeCount > 2) {
+                if ($user->getFollowingCount() > 600 || $likeCount > 5) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo '[liked] ';
                     sleep(random_int(2, 5));
