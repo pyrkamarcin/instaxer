@@ -64,10 +64,11 @@ class Instaxer
 
             foreach ($items as $hashTagFeedItem) {
 
-
+                $id = $hashTagFeedItem->getId();
                 $user = $this->instagram->getUserInfo($hashTagFeedItem->getUser())->getUser();
 
-                echo 'User: ' . $user->getUsername() . ' ';
+                echo 'User: ' . $user->getUsername() . ', ';
+                echo '(id: ' . $id . '), ';
                 echo 'following: ' . $user->getFollowingCount() . ' ';
 
 
@@ -76,7 +77,7 @@ class Instaxer
 
                 echo '(' . $likeCount . '/' . $commentCount . ') ';
 
-                if ($user->getFollowingCount() > 600 || $likeCount > 5) {
+                if ($user->getFollowingCount() > 400 || $likeCount > 5) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo '[liked] ';
                     sleep(random_int(2, 5));
