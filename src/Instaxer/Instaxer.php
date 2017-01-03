@@ -85,9 +85,9 @@ class Instaxer
                 }
 
                 $file = file_get_contents('storage.tmp');
-                $array = explode(';', $file);
+                $haystack = explode(';', $file);
 
-                if (!in_array($hashTagFeedItem->getID(), $array, true)) {
+                if (!in_array($hashTagFeedItem->getID(), $haystack, true)) {
 
                     if ($user->getFollowingCount() > 1000 || $commentCount > 4) {
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ';)');
