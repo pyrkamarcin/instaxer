@@ -95,6 +95,8 @@ class Instaxer
                         echo '[commented] ';
                         sleep(random_int(5, 15));
                     }
+                } else {
+                    echo '[skipped] ';
                 }
 
                 echo "\r\n";
