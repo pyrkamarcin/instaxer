@@ -73,7 +73,7 @@ class Instaxer
 
                 echo '(' . $likeCount . '/' . $commentCount . ') ';
 
-                if ($likeCount > 5) {
+                if ($likeCount > 2) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo '[liked] ';
                     sleep(random_int(2, 5));
@@ -84,8 +84,9 @@ class Instaxer
                     echo '[commented] ';
                     sleep(random_int(2, 5));
                 }
+
+                echo "\r\n";
             }
-            echo "\r\n";
             sleep(random_int(1, 5));
         }
     }
