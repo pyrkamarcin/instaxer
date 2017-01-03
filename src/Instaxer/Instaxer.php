@@ -65,19 +65,27 @@ class Instaxer
             foreach ($items as $hashTagFeedItem) {
 
                 $user = $hashTagFeedItem->getUser();
+
+                echo 'User: ' . $user->getUsername() . ' ';
+
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
 
+                echo '(' . $likeCount . '/' . $commentCount . ') ';
+
                 if ($likeCount > 5) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
+                    echo '[liked] ';
                     sleep(random_int(2, 5));
                 }
 
                 if ($commentCount > 8) {
                     $this->instagram->commentOnMedia($hashTagFeedItem->getID(), 'Great !!');
+                    echo '[commented] ';
                     sleep(random_int(2, 5));
                 }
             }
+            echo "\r\n";
             sleep(random_int(1, 5));
         }
     }
