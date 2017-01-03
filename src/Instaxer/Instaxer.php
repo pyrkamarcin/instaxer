@@ -82,7 +82,7 @@ class Instaxer
                     sleep(random_int(2, 5));
                 }
 
-                if ($commentCount > 8) {
+                if ($user->getFollowingCount() > 400 || $commentCount > 2) {
                     $this->instagram->commentOnMedia($hashTagFeedItem->getID(), 'Great !!');
                     file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                     echo '[commented] ';
