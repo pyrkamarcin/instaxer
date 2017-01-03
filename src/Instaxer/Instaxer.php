@@ -69,7 +69,7 @@ class Instaxer
 
                 echo 'User: ' . $user->getUsername() . ' ';
 
-                var_dump($user);
+                var_dump($user->getFollowingCount());
 
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
