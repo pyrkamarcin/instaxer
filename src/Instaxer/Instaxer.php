@@ -65,7 +65,7 @@ class Instaxer
 
             foreach ($items as $hashTagFeedItem) {
 
-                var_dump($hashTagFeedItem);
+                var_dump($hashTagFeedItem->getUser());
 
                 if ($hashTagFeedItem->isImage()) {
                     $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ':) !');
