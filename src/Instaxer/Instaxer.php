@@ -44,7 +44,6 @@ class Instaxer
         $this->counter = $counter;
         $this->long = $long;
 
-        $this->pb = new Manager(0, ($this->counter * $this->long) - 1, 120, '=', '-', '>');
         $this->marker = 0;
 
         $this->instagram->login($user, $password);
@@ -65,15 +64,17 @@ class Instaxer
 
             foreach ($items as $hashTagFeedItem) {
 
-                var_dump($hashTagFeedItem->getUser());
+
+                $user = $hashTagFeedItem->getUser();
+                $likeCount = $hashTagFeedItem->getLikeCount();
+                $commentCount = $hashTagFeedItem->getCommentCount();
+
 
                 if ($hashTagFeedItem->isImage()) {
                     $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ':) !');
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     sleep(random_int(2, 5));
                 }
-
-                $this->pb->update($this->marker++);
             }
             sleep(random_int(1, 5));
         }
