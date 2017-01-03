@@ -78,7 +78,7 @@ class Instaxer
 
                 echo '(' . $likeCount . '/' . $commentCount . ') ';
 
-                if ($user->getFollowingCount() > 500 || $likeCount > 5) {
+                if ($user->getFollowingCount() > 200 || $likeCount > 2) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo '[liked] ';
                     sleep(random_int(2, 5));
