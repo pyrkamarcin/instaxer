@@ -66,6 +66,7 @@ class Instaxer
             foreach ($items as $hashTagFeedItem) {
 
                 if ($hashTagFeedItem->isImage()) {
+                    $this->instagram->commentOnMedia($hashTagFeedItem->getID(), 'AWS!');
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     sleep(random_int(2, 5));
                 }
