@@ -64,15 +64,17 @@ class Instaxer
 
             foreach ($items as $hashTagFeedItem) {
 
-
                 $user = $hashTagFeedItem->getUser();
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
 
-
-                if ($hashTagFeedItem->isImage()) {
-                    $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ':) !');
+                if ($likeCount > 5) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
+                    sleep(random_int(2, 5));
+                }
+
+                if ($commentCount > 8) {
+                    $this->instagram->commentOnMedia($hashTagFeedItem->getID(), 'Great !!');
                     sleep(random_int(2, 5));
                 }
             }
