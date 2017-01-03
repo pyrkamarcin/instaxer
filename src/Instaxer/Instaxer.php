@@ -64,11 +64,12 @@ class Instaxer
 
             foreach ($items as $hashTagFeedItem) {
 
-                $user = $hashTagFeedItem->getUser();
+
+                $user = $this->instagram->getUserInfo($hashTagFeedItem->getUser())->getUser();
 
                 echo 'User: ' . $user->getUsername() . ' ';
 
-                var_dump($this->instagram->getUserInfo($user));
+                var_dump($user);
 
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
