@@ -76,7 +76,7 @@ class Instaxer
 
                 echo '(' . $likeCount . '/' . $commentCount . ') ';
 
-                if ($user->getFollowingCount() > 400 || $likeCount > 5) {
+                if ($user->getFollowingCount() > 500 || $likeCount > 5) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo '[liked] ';
                     sleep(random_int(2, 5));
@@ -87,7 +87,7 @@ class Instaxer
 
                 if (!in_array($hashTagFeedItem->getID(), $array, true)) {
 
-                    if ($user->getFollowingCount() > 5000 || $commentCount > 6) {
+                    if ($user->getFollowingCount() > 5000 || $commentCount > 4) {
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ';)');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[commented] ';
