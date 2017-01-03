@@ -71,7 +71,6 @@ class Instaxer
                 echo '(id: ' . $id . '), ';
                 echo 'following: ' . $user->getFollowingCount() . ' ';
 
-
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
 
@@ -85,13 +84,14 @@ class Instaxer
 
                 if ($commentCount > 8) {
                     $this->instagram->commentOnMedia($hashTagFeedItem->getID(), 'Great !!');
+                    file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                     echo '[commented] ';
                     sleep(random_int(2, 5));
                 }
 
                 echo "\r\n";
             }
-            sleep(random_int(1, 2));
+            sleep(random_int(3, 8));
         }
     }
 }
