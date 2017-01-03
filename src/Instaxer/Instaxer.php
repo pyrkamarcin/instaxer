@@ -59,6 +59,8 @@ class Instaxer
 
             $item = $array[random_int(0, count($array) - 1)];
 
+            echo '#' . $item . ': ' . "\r\n";
+
             $hashTagFeed = $this->instagram->getTagFeed($item);
             $items = array_slice($hashTagFeed->getItems(), 0, $this->long);
 
@@ -97,7 +99,7 @@ class Instaxer
 
                 echo "\r\n";
             }
-            sleep(random_int(3, 8));
+            sleep(random_int(3, 6));
         }
     }
 }
