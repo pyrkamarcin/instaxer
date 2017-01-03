@@ -68,6 +68,8 @@ class Instaxer
 
                 echo 'User: ' . $user->getUsername() . ' ';
 
+                echo 'getFollowers: ' . $user->getFollowers() . ' ';
+
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
 
@@ -87,7 +89,7 @@ class Instaxer
 
                 echo "\r\n";
             }
-            sleep(random_int(1, 5));
+            sleep(random_int(1, 2));
         }
     }
 }
