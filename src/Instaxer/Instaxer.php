@@ -93,13 +93,13 @@ class Instaxer
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ';)');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[commented] ';
-                        sleep(random_int(2, 5));
+                        sleep(random_int(5, 15));
                     }
                 }
 
                 echo "\r\n";
             }
-            sleep(random_int(3, 6));
+            sleep(random_int(2, 5));
         }
     }
 }
