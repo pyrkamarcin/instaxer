@@ -89,7 +89,7 @@ class Instaxer
 
                 if (!in_array($hashTagFeedItem->getID(), $haystack, true)) {
 
-                    if ($user->getFollowingCount() > 1000 || $commentCount > 4) {
+                    if ($user->getFollowingCount() > 800 & $commentCount > 2) {
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ';)');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[commented] ';
