@@ -82,11 +82,17 @@ class Instaxer
                     sleep(random_int(2, 5));
                 }
 
-                if ($user->getFollowingCount() > 400 || $commentCount > 2) {
-                    $this->instagram->commentOnMedia($hashTagFeedItem->getID(), 'Great !!');
-                    file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
-                    echo '[commented] ';
-                    sleep(random_int(2, 5));
+                $file = file_get_contents('storage.tmp');
+                $array = explode(';', $file);
+
+                if (!in_array($hashTagFeedItem->getID(), $array, true)) {
+
+                    if ($user->getFollowingCount() > 400 || $commentCount > 1) {
+                        $this->instagram->commentOnMedia($hashTagFeedItem->getID(), 'Great !!');
+                        file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
+                        echo '[commented] ';
+                        sleep(random_int(2, 5));
+                    }
                 }
 
                 echo "\r\n";
