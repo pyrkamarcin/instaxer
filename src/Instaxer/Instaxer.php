@@ -80,10 +80,10 @@ class Instaxer
 
                 echo '(' . $likeCount . '/' . $commentCount . ') ';
 
-                if ($user->getFollowingCount() > 600 || $likeCount > 2) {
+                if ($user->getFollowingCount() > 1000 & $likeCount > 5) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo '[liked] ';
-                    sleep(random_int(2, 5));
+                    sleep(random_int(5, 8));
                 }
 
                 $file = file_get_contents('storage.tmp');
@@ -91,21 +91,29 @@ class Instaxer
 
                 if (!in_array($hashTagFeedItem->getID(), $haystack, true)) {
 
-
-                    if ($user->getFollowingCount() > 800 & $commentCount > 2 & $followRatio > 0.95) {
-                        sleep(random_int(2, 5));
+                    if ($user->getFollowingCount() > 400 & $commentCount > 1 & $followRatio > 0.95) {
+                        sleep(random_int(0, 1));
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ';)');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[commented] ';
                         sleep(random_int(5, 15));
                     }
+
+                    if ($user->getFollowingCount() > 10000 & $commentCount > 5 & $followRatio > 2) {
+                        sleep(random_int(0, 1));
+                        $this->instagram->commentOnMedia($hashTagFeedItem->getID(), '@jebthecat see!');
+                        file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
+                        echo '[makred] ';
+                        sleep(random_int(5, 8));
+                    }
+
                 } else {
                     echo '[skipped] ';
                 }
 
                 echo "\r\n";
             }
-            sleep(random_int(2, 5));
+            sleep(random_int(5, 8));
         }
     }
 }
