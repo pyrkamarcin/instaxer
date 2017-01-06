@@ -73,14 +73,14 @@ class Instaxer
 
                 echo 'User: ' . $user->getUsername() . ', ';
                 echo '(id: ' . $id . '), ';
-                echo 'following: ' . $user->getFollowingCount() . '(ratio: ' . round($followRatio, 1) . ') ';
+                echo 'following: ' . $user->getFollowingCount() . ' (ratio: ' . round($followRatio, 1) . ') ';
 
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
 
                 echo '(' . $likeCount . '/' . $commentCount . ') ';
 
-                if ($user->getFollowingCount() > 1000 & $likeCount > 5) {
+                if ($user->getFollowingCount() > 750 || $likeCount > 2) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo '[liked] ';
                     sleep(random_int(5, 8));
@@ -111,9 +111,9 @@ class Instaxer
                     echo '[skipped] ';
                 }
 
+                sleep(random_int(5, 8));
                 echo "\r\n";
             }
-            sleep(random_int(5, 8));
         }
     }
 }
