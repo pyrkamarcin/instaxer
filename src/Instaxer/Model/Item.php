@@ -2,39 +2,33 @@
 
 namespace Instaxer\Model;
 
+use Instaxer\Model;
+
 /**
  * Class Item
  * @package Instaxer\Model
  */
-class Item
+class Item extends Model
 {
     /**
-     * @var array
+     * @var
      */
-    protected $arrayOfTags;
+    protected $item;
 
     /**
      * Item constructor.
-     * @param array $arrayOfTags
+     * @param $item
      */
-    public function __construct(array $arrayOfTags)
+    public function __construct($item)
     {
-        $this->arrayOfTags = $arrayOfTags;
+        $this->item = $item;
     }
 
     /**
-     * @return array
+     * @return mixed
      */
-    public function getArrayOfTags(): array
+    public function getItem()
     {
-        return $this->arrayOfTags;
-    }
-
-    /**
-     * @param array $arrayOfTags
-     */
-    public function setArrayOfTags(array $arrayOfTags)
-    {
-        $this->arrayOfTags = $arrayOfTags;
+        return $this->item;
     }
 }

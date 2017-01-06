@@ -3,7 +3,7 @@
 namespace Instaxer;
 
 use Instagram\Instagram;
-use ProgressBar\Manager;
+use Instaxer\Model\ItemRepository;
 
 /**
  * Class Instaxer
@@ -50,35 +50,37 @@ class Instaxer
     }
 
     /**
-     * @param array $array
+     * @param ItemRepository $itemRepository
      * @throws \Exception
      */
-    public function run(array $array)
+    public function run(ItemRepository $itemRepository)
     {
+
         for ($c = 0; $c < $this->counter; $c++) {
 
-            $item = $array[random_int(0, count($array) - 1)];
+            $item = $itemRepository->getRandomItem();
 
-            echo '#' . $item . ': ' . "\r\n";
+            echo '#' . $item->getItem() . ': ' . "\r\n";
 
-            $hashTagFeed = $this->instagram->getTagFeed($item);
+            $hashTagFeed = $this->instagram->getTagFeed($item->getItem());
             $items = array_slice($hashTagFeed->getItems(), 0, $this->long);
 
             foreach ($items as $hashTagFeedItem) {
 
                 $id = $hashTagFeedItem->getId();
                 $user = $this->instagram->getUserInfo($hashTagFeedItem->getUser())->getUser();
+                $followRatio = $user->getFollowingCount() / $user->getFollowerCount();
 
                 echo 'User: ' . $user->getUsername() . ', ';
                 echo '(id: ' . $id . '), ';
-                echo 'following: ' . $user->getFollowingCount() . ' ';
+                echo 'following: ' . $user->getFollowingCount() . '(ratio: ' . round($followRatio, 1) . ') ';
 
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
 
                 echo '(' . $likeCount . '/' . $commentCount . ') ';
 
-                if ($user->getFollowingCount() > 200 || $likeCount > 2) {
+                if ($user->getFollowingCount() > 600 || $likeCount > 2) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo '[liked] ';
                     sleep(random_int(2, 5));
@@ -89,7 +91,9 @@ class Instaxer
 
                 if (!in_array($hashTagFeedItem->getID(), $haystack, true)) {
 
-                    if ($user->getFollowingCount() > 800 & $commentCount > 2) {
+
+                    if ($user->getFollowingCount() > 800 & $commentCount > 2 & $followRatio > 0.95) {
+                        sleep(random_int(2, 5));
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ';)');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[commented] ';

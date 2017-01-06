@@ -16,6 +16,7 @@
   },
   "require": {
     "liamcottle/instagram-sdk-php": "^1.0",
+    "phpunit/phpunit": "5.*",
     "guiguiboy/PHP-CLI-Progress-Bar": "dev-master",
     "roave/security-advisories": "dev-master"
   }
