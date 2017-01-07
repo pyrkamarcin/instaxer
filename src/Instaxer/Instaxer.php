@@ -99,7 +99,7 @@ class Instaxer
                         sleep(random_int(5, 15));
                     }
 
-                    if ($user->getFollowingCount() > 500 & $commentCount > 1 & $followRatio > 1.5) {
+                    if ($user->getFollowingCount() > 500 & $commentCount > 2 & $followRatio > 1.5) {
                         sleep(random_int(0, 1));
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), '@jebthecat see!');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
