@@ -98,7 +98,7 @@ class Instaxer
                         sleep(random_int(5, 15));
                     }
 
-                    if ($user->getFollowingCount() > 1500 & $followRatio > 1.5) {
+                    if ($user->getFollowingCount() > 500 & $followRatio > 2) {
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), '@jebs_pap @jebs_mam must see!');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[makred] ';
