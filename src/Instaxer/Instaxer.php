@@ -69,11 +69,11 @@ class Instaxer
 
                 $id = $hashTagFeedItem->getId();
                 $user = $this->instagram->getUserInfo($hashTagFeedItem->getUser())->getUser();
-                $followRatio = $user->getFollowingCount() / $user->getFollowerCount();
+                $followRatio = $user->getFollowerCount() / $user->getFollowingCount();
 
                 echo 'User: ' . $user->getUsername() . ', ';
                 echo '(id: ' . $id . '), ';
-                echo 'following: ' . $user->getFollowingCount() . ' (ratio: ' . round($followRatio, 1) . ') ';
+                echo 'followers: ' . $user->getFollowerCount() . ' (ratio: ' . round($followRatio, 1) . ') ';
 
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
