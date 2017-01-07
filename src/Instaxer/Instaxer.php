@@ -80,7 +80,7 @@ class Instaxer
 
                 echo '(' . $likeCount . '/' . $commentCount . ') ';
 
-                if ($user->getFollowingCount() > 400 || $likeCount > 1) {
+                if ($user->getFollowingCount() > 100) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo '[liked] ';
                     sleep(random_int(5, 8));
@@ -91,14 +91,14 @@ class Instaxer
 
                 if (!in_array($hashTagFeedItem->getID(), $haystack, true)) {
 
-                    if ($user->getFollowingCount() > 1000 & $followRatio > 0.55) {
+                    if ($user->getFollowingCount() > 200 & $followRatio > 0.55) {
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ':)');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[commented] ';
                         sleep(random_int(5, 15));
                     }
 
-                    if ($user->getFollowingCount() > 500 & $commentCount > 2 & $followRatio > 1.5) {
+                    if ($user->getFollowingCount() > 1500 & $followRatio > 1.5) {
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), '@jebs_pap @jebs_mam must see!');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[makred] ';
