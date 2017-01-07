@@ -91,14 +91,14 @@ class Instaxer
 
                 if (!in_array($hashTagFeedItem->getID(), $haystack, true)) {
 
-                    if ($user->getFollowingCount() > 200 & $followRatio > 0.55) {
+                    if ($user->getFollowerCount() > 200 & $followRatio > 0.55) {
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ':)');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[commented] ';
                         sleep(random_int(5, 15));
                     }
 
-                    if ($user->getFollowingCount() > 500 & $followRatio > 2) {
+                    if ($user->getFollowerCount() > 500 & $followRatio > 2) {
                         $this->instagram->commentOnMedia($hashTagFeedItem->getID(), '@jebs_pap @jebs_mam must see!');
                         file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
                         echo '[makred] ';
