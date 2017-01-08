@@ -86,30 +86,6 @@ class Instaxer
                     sleep(random_int(5, 8));
                 }
 
-                $file = file_get_contents('storage.tmp');
-                $haystack = explode(';', $file);
-
-                if (!in_array($hashTagFeedItem->getID(), $haystack, true)) {
-
-
-                    if ($user->getFollowerCount() > 1000 & $followRatio > 2) {
-                        $this->instagram->commentOnMedia($hashTagFeedItem->getID(), '@jebs_pap @jebs_mam must see!');
-                        file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
-                        echo '[makred] ';
-                        sleep(random_int(5, 8));
-                    } elseif ($user->getFollowerCount() > 200 | $followRatio > 0.55) {
-                        $this->instagram->commentOnMedia($hashTagFeedItem->getID(), ':)');
-                        file_put_contents('storage.tmp', $hashTagFeedItem->getID() . ';', FILE_APPEND);
-                        echo '[commented] ';
-                        sleep(random_int(5, 15));
-                    } else {
-                        echo '[...] ';
-                    }
-
-                } else {
-                    echo '[skipped] ';
-                }
-
                 sleep(random_int(5, 8));
                 echo "\r\n";
             }
