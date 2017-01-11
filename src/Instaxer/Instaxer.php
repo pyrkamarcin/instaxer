@@ -41,12 +41,12 @@ class Instaxer
         $this->instagram = new Instagram();
         $this->instagram->setVerifyPeer(false);
 
+        $this->instagram->login($user, $password);
+
         $this->counter = $counter;
         $this->long = $long;
 
         $this->marker = 0;
-
-        $this->instagram->login($user, $password);
     }
 
     /**
