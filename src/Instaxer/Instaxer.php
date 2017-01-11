@@ -15,14 +15,17 @@ class Instaxer
      * @var int
      */
     public $counter;
+
     /**
      * @var int
      */
     public $long;
+
     /**
      * @var int
      */
     public $marker;
+
     /**
      * @var Instagram
      */
