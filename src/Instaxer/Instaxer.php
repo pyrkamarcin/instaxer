@@ -90,7 +90,7 @@ class Instaxer
 
             $item = $itemRepository->getRandomItem();
 
-            echo '#' . $item->getItem() . ': ' . "\r\n";
+            echo sprintf('#%s: ' . "\r\n", $item->getItem());
 
             $hashTagFeed = $this->instagram->getTagFeed($item->getItem());
             $items = array_slice($hashTagFeed->getItems(), 0, $this->long);
@@ -101,23 +101,23 @@ class Instaxer
                 $user = $this->instagram->getUserInfo($hashTagFeedItem->getUser())->getUser();
                 $followRatio = $user->getFollowerCount() / $user->getFollowingCount();
 
-                echo 'User: ' . $user->getUsername() . ', ';
-                echo '(id: ' . $id . '), ';
-                echo 'followers: ' . $user->getFollowerCount() . ' (ratio: ' . round($followRatio, 1) . ') ';
+                echo sprintf('User: %s; ', $user->getUsername());
+                echo sprintf('id: %s,  ', $id);
+                echo sprintf('followers: %s,  ratio: %s, ', $user->getFollowerCount(), round($followRatio, 1));
 
                 $likeCount = $hashTagFeedItem->getLikeCount();
                 $commentCount = $hashTagFeedItem->getCommentCount();
 
-                echo '(' . $likeCount . '/' . $commentCount . ') ';
+                echo sprintf('photo: %s/%s ', $likeCount, $commentCount);
 
                 if ($user->getFollowingCount() > 100) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
-                    echo '[liked] ';
+                    echo sprintf('[liked] ');
                     sleep(random_int(5, 8));
                 }
 
                 sleep(random_int(5, 8));
-                echo "\r\n";
+                echo sprintf("\r\n");
             }
         }
     }
