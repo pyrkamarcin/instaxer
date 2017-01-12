@@ -3,7 +3,7 @@
 namespace Instaxer;
 
 use Instagram\Instagram;
-use Instaxer\Model\ItemRepository;
+use Instaxer\Domain\Model\ItemRepository;
 
 /**
  * Class Instaxer

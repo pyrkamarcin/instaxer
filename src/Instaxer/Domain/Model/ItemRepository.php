@@ -1,12 +1,12 @@
 <?php
 
-namespace Instaxer\Model;
+namespace Instaxer\Domain\Model;
 
-use Instaxer\Repository;
+use Instaxer\Domain\Repository;
 
 /**
  * Class ItemRepository
- * @package Instaxer\Model
+ * @package Instaxer\Domain\Model
  */
 class ItemRepository extends Repository
 {

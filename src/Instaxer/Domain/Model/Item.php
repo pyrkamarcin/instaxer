@@ -1,12 +1,12 @@
 <?php
 
-namespace Instaxer\Model;
+namespace Instaxer\Domain\Model;
 
-use Instaxer\Model;
+use Instaxer\Domain\Model;
 
 /**
  * Class Item
- * @package Instaxer\Model
+ * @package Instaxer\Domain\Model
  */
 class Item extends Model
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Instaxer;
+namespace Instaxer\Domain;
 
 /**
  * Class Repository
- * @package Instaxer
+ * @package Instaxer\Domain
  */
 class Repository
 {
