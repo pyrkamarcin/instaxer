@@ -27,7 +27,7 @@ class ItemRepository extends Repository
     /**
      * @return Item
      */
-    public function getRandomItem()
+    public function getRandomItem(): Item
     {
         return new Item($this->arrayOfTags[random_int(0, count($this->arrayOfTags) - 1)]);
     }
