@@ -5,7 +5,7 @@ require __DIR__ . '/config.php';
 
 try {
 
-    $instaxer = new \Instaxer\Instaxer($user1, $pass1);
+    $instaxer = new \Instaxer\Instaxer($user1, $pass1, 10, 5);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
     $following = $instaxer->getFollowing($account);
@@ -36,6 +36,7 @@ try {
                 echo $user->getUsername() . ' nie obserwuje mnie' . "\r\n";
                 $instaxer->instagram->followUser($user);
                 file_put_contents('storage.tmp', $user->getUsername() . ';', FILE_APPEND);
+                sleep(5);
             }
         }
     }
@@ -43,4 +44,3 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage() . "\n";
 }
-exit();
