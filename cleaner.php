@@ -8,8 +8,14 @@ try {
     $instaxer = new \Instaxer\Instaxer($user1, $pass1);
 
 
-    $file = file_get_contents('storage.tmp');
+    $file = file_get_contents(__DIR__ . '/storage.tmp');
     $haystack = explode(';', $file);
+
+
+    $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
+    $following = $instaxer->getFollowing($account);
+
+    var_dump(count($following));
 
     foreach ($haystack as $username) {
 
