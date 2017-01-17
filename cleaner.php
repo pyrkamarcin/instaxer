@@ -20,7 +20,7 @@ try {
             $user = $instaxer->instagram->getUserByUsername($username);
             echo ' [' . $instaxer->instagram->unfollowUser($user)->getStatus() . '] ' . "\r\n";
 
-            sleep(2);
+            sleep(10);
         }
     }
 
