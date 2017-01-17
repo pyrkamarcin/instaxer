@@ -12,7 +12,7 @@ try {
 
     echo 'Current count: ' . count($following) . "\r\n";
 
-    for ($c = 1; $c < 200; $c++) {
+    for ($c = 1; $c <= 200; $c++) {
 
         echo $c . ": \t";
 
@@ -22,15 +22,15 @@ try {
 
         $userMostImportantStat = $user->getFollowerCount();
 
-        if ($userMostImportantStat < 5000) {
+        if ($userMostImportantStat < 400) {
             $instaxer->instagram->unfollowUser($user);
             echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
-            sleep(3);
+            sleep(10);
         } else {
             echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ stay ] ' . "\r\n";
         }
 
-        sleep(3);
+        sleep(2);
 
     }
 
