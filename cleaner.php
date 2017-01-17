@@ -15,9 +15,9 @@ try {
 
         if (strlen($username) > 3) {
 
+            $user = $instaxer->instagram->getUserByUsername($username);
             echo $user->getUsername() . ' [ ... ] ';
 
-            $user = $instaxer->instagram->getUserByUsername($username);
             echo ' [' . $instaxer->instagram->unfollowUser($user)->getStatus() . '] ' . "\r\n";
 
             sleep(10);
