@@ -17,7 +17,9 @@ try {
 
             $user = $instaxer->instagram->getUserByUsername($username);
             $instaxer->instagram->unfollowUser($user);
-            sleep(1);
+
+            echo $user->getUsername() . ' ... ' . "\r\n";
+            sleep(2);
         }
     }
 
