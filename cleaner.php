@@ -11,7 +11,6 @@ try {
     $file = file_get_contents(__DIR__ . '/storage.tmp');
     $haystack = explode(';', $file);
 
-
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
     $following = $instaxer->getFollowing($account);
 

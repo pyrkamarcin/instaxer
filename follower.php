@@ -17,7 +17,6 @@ try {
 
     $elements = $hashTagFeed->getItems();
 
-
     foreach ($elements as $hashTagFeedItem) {
         $id = $hashTagFeedItem->getId();
         $user = $instaxer->instagram->getUserInfo($hashTagFeedItem->getUser())->getUser();
