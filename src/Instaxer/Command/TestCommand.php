@@ -2,6 +2,8 @@
 
 namespace Instaxer\Command;
 
+use Instaxer\Configuration;
+use Instaxer\DatabaseConfiguration;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -30,12 +32,5 @@ class TestCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln([
-            'Test command',
-            '============',
-            '',
-        ]);
-
-        $output->writeln('Test!');
     }
 }
