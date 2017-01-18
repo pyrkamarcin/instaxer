@@ -7,5 +7,6 @@ use Symfony\Component\Console\Application;
 $instaxer = new Application();
 
 $instaxer->add(new \Instaxer\Command\TestCommand());
+$instaxer->add(new \Instaxer\Command\LikeCommand());
 
 $instaxer->run();
