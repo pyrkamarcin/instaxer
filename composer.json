@@ -20,6 +20,7 @@
     "symfony/console": "^3.2",
     "symfony/config": "^3.2",
     "symfony/var-dumper": "dev-master",
-    "roave/security-advisories": "dev-master"
+    "roave/security-advisories": "dev-master",
+    "hassankhan/config": "^0.10.0"
   }
 }

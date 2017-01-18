@@ -6,4 +6,5 @@
 /nohup.out
 /storage.tmp
 /session.dat
-/config/config.yml
+/config/*
+!/config/.gitkeep

@@ -2,12 +2,12 @@
 
 namespace Instaxer\Command;
 
-use Instaxer\Configuration;
-use Instaxer\DatabaseConfiguration;
+use Instaxer\Domain\Model\ItemRepository;
+use Instaxer\Instaxer;
+use Noodlehaus\Config;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Yaml\Yaml;
 
 class LikeCommand extends Command
 {
@@ -30,19 +30,16 @@ class LikeCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $value = Yaml::parse(file_get_contents(__DIR__ . '/../../../config/config.yml'));
+        $conf = new Config(__DIR__ . '/../../../config/config.json');
+        $tags = explode("\n", file_get_contents(__DIR__ . '/../../../app/storage/tags.dat'));
 
+        try {
 
-        dump($value);
+            $instaxer = new Instaxer($conf->get('username'), $conf->get('password'), 10, 10);
+            $instaxer->run(new ItemRepository($tags));
 
-
-//        try {
-//
-//            $instaxer = new Instaxer($user1, $pass1, 10, 10);
-//            $instaxer->run(new ItemRepository($array));
-//
-//        } catch (\Exception $e) {
-//            echo $e->getMessage() . "\n";
-//        }
+        } catch (\Exception $e) {
+            echo $e->getMessage() . "\n";
+        }
     }
 }
