@@ -25,7 +25,7 @@ try {
 
             echo ' [' . $instaxer->instagram->unfollowUser($user)->getStatus() . '] ' . "\r\n";
 
-            sleep(10);
+            sleep(2);
         }
     }
 
