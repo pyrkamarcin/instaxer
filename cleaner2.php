@@ -22,12 +22,20 @@ try {
 
         $userMostImportantStat = $user->getFollowerCount();
 
-        if ($userMostImportantStat < 2000) {
+        if ($userMostImportantStat < 350) {
             $instaxer->instagram->unfollowUser($user);
             echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
-            sleep(10);
+            sleep(random_int(8, 15));
         } else {
-            echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ stay ] ' . "\r\n";
+            echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ stay ] ';
+            $hashTagFeed = $instaxer->instagram->getUserFeed($user);
+            $items = array_slice($hashTagFeed->getItems(), 0, random_int(3, 7));
+            foreach ($items as $hashTagFeedItem) {
+                $instaxer->instagram->likeMedia($hashTagFeedItem->getID());
+                echo sprintf('[ liked ] ');
+                sleep(random_int(3, 7));
+            }
+            echo "\r\n";
         }
 
         sleep(2);
