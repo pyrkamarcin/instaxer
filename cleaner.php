@@ -26,6 +26,8 @@ try {
             if ($user) {
                 echo $user->getUsername() . ' [ ... ] ';
                 echo ' [' . $instaxer->instagram->unfollowUser($user)->getStatus() . '] ' . "\r\n";
+            } else {
+                echo ' [ fuck! ] ';
             }
 
             $newFile = str_replace($user->getUsername() . ';', '', $file);
