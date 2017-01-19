@@ -14,21 +14,22 @@ try {
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
     $following = $instaxer->getFollowing($account);
 
-    var_dump(count($following));
-
     foreach ($haystack as $username) {
 
         if (strlen($username) > 3) {
 
+            if (!empty($instaxer->instagram->searchUsers($username)->getUsers())) {
+                $user = $instaxer->instagram->getUserByUsername($username);
+                echo $user->getUsername() . ' [ ... ] ';
+                echo ' [' . $instaxer->instagram->unfollowUser($user)->getStatus() . '] ' . "\r\n";
+            } else {
+                echo ' [ fuck! ] ';
+                echo ' Clean: ' . $username . "\r\n";
+            }
 
-            $user = $instaxer->instagram->getUserByUsername($username);
-            echo $user->getUsername() . ' [ ... ] ';
-
-            $newFile = str_replace($user->getUsername() . ';', '', $file);
-
-            echo ' [' . $instaxer->instagram->unfollowUser($user)->getStatus() . '] ' . "\r\n";
-
+            $newFile = str_replace($username . ';', '', $file);
             file_put_contents('storage.tmp', $newFile);
+
             sleep(2);
         }
     }
