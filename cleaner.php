@@ -29,8 +29,6 @@ try {
 
             $newFile = str_replace($username . ';', '', $file);
             file_put_contents('storage.tmp', $newFile);
-
-            sleep(2);
         }
     }
 
