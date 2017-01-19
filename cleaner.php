@@ -22,11 +22,14 @@ try {
 
 
             $user = $instaxer->instagram->getUserByUsername($username);
-            echo $user->getUsername() . ' [ ... ] ';
+
+            if ($user) {
+                echo $user->getUsername() . ' [ ... ] ';
+                echo ' [' . $instaxer->instagram->unfollowUser($user)->getStatus() . '] ' . "\r\n";
+            }
 
             $newFile = str_replace($user->getUsername() . ';', '', $file);
 
-            echo ' [' . $instaxer->instagram->unfollowUser($user)->getStatus() . '] ' . "\r\n";
 
             file_put_contents('storage.tmp', $newFile);
             sleep(2);
