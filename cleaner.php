@@ -22,6 +22,7 @@ try {
 
             if (!empty($instaxer->instagram->searchUsers($username)->getUsers())) {
                 $user = $instaxer->instagram->getUserByUsername($username);
+                echo ' [ ' . $user->getFollowingCount() . ' ] ';
                 echo ' [ ' . $instaxer->instagram->unfollowUser($user)->getStatus() . ' ] ' . "\r\n";
             } else {
                 echo ' [ fuck! ] ';
