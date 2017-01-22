@@ -32,7 +32,7 @@ try {
             $file = file_get_contents(__DIR__ . '/storage.tmp');
             $newFile = str_replace($username . ';', '', $file);
             file_put_contents('storage.tmp', $newFile, LOCK_EX);
-            sleep(2);
+//            sleep(2);
         }
     }
 
