@@ -34,14 +34,14 @@ try {
                 $instaxer->instagram->likeMedia($hashTagFeedItem->getID());
                 echo sprintf('[ liked ] ');
                 sleep(random_int(3, 7));
-//            }
-                echo "\r\n";
             }
-
-            sleep(2);
-
         }
+
+        echo "\r\n";
+        sleep(2);
+
     }
+
 
 } catch (Exception $e) {
     echo $e->getMessage() . "\n";
