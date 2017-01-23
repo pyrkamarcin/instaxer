@@ -22,7 +22,7 @@ try {
 
         $userMostImportantStat = $user->getFollowerCount();
 
-        if ($userMostImportantStat < 650) {
+        if ($userMostImportantStat < 750) {
             $instaxer->instagram->unfollowUser($user);
             echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
             sleep(random_int(8, 15));
