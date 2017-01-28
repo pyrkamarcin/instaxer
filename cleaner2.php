@@ -14,7 +14,6 @@ try {
 
     for ($c = 1; $c <= 200; $c++) {
 
-        echo $c . ": \t";
 
         $profile = $following[random_int(0, count($following) - 1)];
 
@@ -22,24 +21,22 @@ try {
 
         $userMostImportantStat = $user->getFollowerCount();
 
-        if ($userMostImportantStat < 750) {
+        if ($userMostImportantStat < 20000) {
+            echo $c . ": \t";
             $instaxer->instagram->unfollowUser($user);
             echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
-            sleep(random_int(8, 15));
+            sleep(random_int(0, 1));
         } else {
-            echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ stay ] ';
-            $hashTagFeed = $instaxer->instagram->getUserFeed($user);
-            $items = array_slice($hashTagFeed->getItems(), 0, random_int(1, 6));
-            foreach ($items as $hashTagFeedItem) {
-                $instaxer->instagram->likeMedia($hashTagFeedItem->getID());
-                echo sprintf('[ liked ] ');
-                sleep(random_int(3, 7));
-            }
+//            echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ stay ] ';
+//            $hashTagFeed = $instaxer->instagram->getUserFeed($user);
+//            $items = array_slice($hashTagFeed->getItems(), 0, random_int(1, 6));
+//            foreach ($items as $hashTagFeedItem) {
+//                $instaxer->instagram->likeMedia($hashTagFeedItem->getID());
+//                echo sprintf('[ liked ] ');
+//                sleep(random_int(3, 7));
+//            }
+//            echo "\r\n";
         }
-
-        echo "\r\n";
-        sleep(2);
-
     }
 
 
