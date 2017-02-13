@@ -34,6 +34,16 @@ try {
             if ($userFollow !== true) {
                 echo $user->getUsername() . ' nie obserwuje mnie' . "\r\n";
                 $instaxer->instagram->followUser($user);
+
+                $hashTagFeed = $instaxer->instagram->getUserFeed($user);
+                $items = array_slice($hashTagFeed->getItems(), 0, random_int(3, 7));
+                foreach ($items as $hashTagFeedItem) {
+                    $instaxer->instagram->likeMedia($hashTagFeedItem->getID());
+                    echo sprintf('[ liked ] ');
+                    sleep(random_int(3, 7));
+                }
+
+
                 file_put_contents('storage.tmp', $user->getUsername() . ';', FILE_APPEND);
                 sleep(random_int(1, 4));
             }
