@@ -79,6 +79,44 @@ class Instaxer
         $this->marker = 0;
     }
 
+    public function localizer(ItemRepository $itemRepository)
+    {
+        for ($c = 0; $c < $this->counter; $c++) {
+
+            $item = $itemRepository->getRandomItem();
+
+            echo sprintf('#%s: ' . "\r\n", $item->getItem());
+
+            $hashTagFeed = $this->instagram->getLocationFeed($item->getItem());
+            $items = array_slice($hashTagFeed->getItems(), 0, $this->long);
+
+            foreach ($items as $hashTagFeedItem) {
+
+                $id = $hashTagFeedItem->getId();
+                $user = $this->instagram->getUserInfo($hashTagFeedItem->getUser())->getUser();
+                $followRatio = $user->getFollowerCount() / $user->getFollowingCount();
+
+                echo sprintf('User: %s; ', $user->getUsername());
+                echo sprintf('id: %s,  ', $id);
+                echo sprintf('followers: %s,  ratio: %s, ', $user->getFollowerCount(), round($followRatio, 1));
+
+                $likeCount = $hashTagFeedItem->getLikeCount();
+                $commentCount = $hashTagFeedItem->getCommentCount();
+
+                echo sprintf('photo: %s/%s ', $likeCount, $commentCount);
+
+                if ($user->getFollowingCount() > 100) {
+                    $this->instagram->likeMedia($hashTagFeedItem->getID());
+                    echo sprintf('[liked] ');
+                    sleep(random_int(5, 8));
+                }
+
+                sleep(random_int(5, 8));
+                echo sprintf("\r\n");
+            }
+        }
+    }
+
     /**
      * @param ItemRepository $itemRepository
      * @throws \Exception

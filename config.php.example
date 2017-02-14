@@ -4,3 +4,5 @@ $user1 = '';
 $pass1 = '';
 
 $array = [];
+
+$locales = [];
