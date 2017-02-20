@@ -26,9 +26,12 @@ try {
             echo sprintf('followers: %s,  ratio: %s, ', $user->getFollowerCount(), round($followRatio, 1));
 
             $instaxer->instagram->likeMedia($hashTagFeedItem->getID());
+            echo sprintf('[liked] ');
 
             sleep(random_int(2, 5));
+            echo sprintf("\r\n");
         }
+        sleep(random_int(2, 5));
     }
 
 } catch (Exception $e) {
