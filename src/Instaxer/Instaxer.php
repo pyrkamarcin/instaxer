@@ -113,7 +113,6 @@ class Instaxer
                 if ($user->getFollowingCount() > 100) {
                     $this->instagram->likeMedia($hashTagFeedItem->getID());
                     echo sprintf('[liked] ');
-                    sleep(random_int(2, 5));
                 }
 
                 sleep(random_int(2, 5));
