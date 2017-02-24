@@ -35,11 +35,9 @@ class Instaxer
      * Instaxer constructor.
      * @param string $user
      * @param string $password
-     * @param int $counter
-     * @param int $long
      * @throws \Exception
      */
-    public function __construct(string $user, string $password, int $counter = 10, int $long = 2)
+    public function __construct(string $user, string $password)
     {
         $this->instagram = new Instagram();
 
@@ -72,9 +70,6 @@ class Instaxer
                 unlink($sessionFile);
             }
         }
-
-        $this->counter = $counter;
-        $this->long = $long;
 
         $this->marker = 0;
     }
