@@ -7,7 +7,7 @@ try {
 
     $instaxer = new \Instaxer\Instaxer($user1, $pass1);
 
-    $locations = $instaxer->instagram->searchFacebookPlacesByLocation(52.408, 16.933);
+    $locations = $instaxer->instagram->searchFacebookPlacesByLocation(53.431831, 14.553599);
 
     foreach ($locations->getItems() as $location) {
 
