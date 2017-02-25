@@ -1,6 +1,7 @@
 <?php
 
 namespace Instaxer\Domain;
+http://monoawards.com/winners-gallery/monochrome-awards-2016/amateur/nude/hm/4483
 
 /**
  * Class Session
@@ -29,7 +30,7 @@ class Session
     /**
      * @return bool
      */
-    public function checkExistsSessionFile()
+    public function checkExistsSessionFile(): bool
     {
         return is_file($this->sessionFile);
     }
@@ -37,7 +38,7 @@ class Session
     /**
      * @return string
      */
-    public function getSevedSession()
+    public function getSevedSession(): string
     {
         return file_get_contents($this->sessionFile);
     }

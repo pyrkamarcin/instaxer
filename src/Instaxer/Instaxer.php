@@ -23,7 +23,7 @@ class Instaxer
 
     /**
      * Instaxer constructor.
-     * @throws \Exception
+     * @param $sessionFilePath
      */
     public function __construct($sessionFilePath)
     {
