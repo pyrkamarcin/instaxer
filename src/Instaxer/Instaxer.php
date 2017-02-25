@@ -80,7 +80,6 @@ class Instaxer
      */
     public function run(ItemRepository $itemRepository)
     {
-
         for ($c = 0; $c < $this->counter; $c++) {
 
             $item = $itemRepository->getRandomItem();
@@ -114,43 +113,5 @@ class Instaxer
                 echo sprintf("\r\n");
             }
         }
-    }
-
-    public function getFollowing($user)
-    {
-
-        $followingCount = $this->instagram->getUserInfo($user)->getUser()->getFollowingCount();
-
-        $array = [];
-        $counter = ceil($followingCount / 200);
-
-        $lastId = $user;
-
-        for ($i = 1; $i <= $counter; $i++) {
-            $fall = $this->instagram->getUserFollowing($user, $lastId);
-            $lastId = $fall->getNextMaxId();
-            $array = array_merge($array, $fall->getFollowers());
-        }
-
-        return $array;
-    }
-
-    public function getFollowers($user)
-    {
-
-        $followersCount = $this->instagram->getUserInfo($user)->getUser()->getFollowerCount();
-
-        $array = [];
-        $counter = ceil($followersCount / 200);
-
-        $lastId = $user;
-
-        for ($i = 1; $i <= $counter; $i++) {
-            $fall = $this->instagram->getUserFollowers($user, $lastId);
-            $lastId = $fall->getNextMaxId();
-            $array = array_merge($array, $fall->getFollowers());
-        }
-
-        return $array;
     }
 }

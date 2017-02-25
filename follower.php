@@ -8,8 +8,12 @@ try {
     $instaxer = new \Instaxer\Instaxer($user1, $pass1, 2, 5);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
-    $following = $instaxer->getFollowing($account);
-    $followers = $instaxer->getFollowers($account);
+
+    $following = new \Instaxer\Request\Following($instaxer);
+    $followers = new \Instaxer\Request\Followers($instaxer);
+
+    $following = $following->getFollowing($account);
+    $followers = $followers->getFollowers($account);
 
     $itemRepository = new \Instaxer\Domain\Model\ItemRepository($array);
     $item = $itemRepository->getRandomItem();

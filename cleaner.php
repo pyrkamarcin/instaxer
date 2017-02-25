@@ -12,7 +12,9 @@ try {
     $haystack = explode(';', $file);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
-    $following = $instaxer->getFollowing($account);
+
+    $following = new \Instaxer\Request\Following($instaxer);
+    $following = $following->getFollowing($account);
 
     foreach ($haystack as $username) {
 
