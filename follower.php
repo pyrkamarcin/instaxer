@@ -8,9 +8,6 @@ try {
     $instaxer = new \Instaxer\Instaxer();
     $instaxer->login($user1, $pass1);
 
-    $instaxer->counter = 50;
-    $instaxer->long = 20;
-
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
 
     $following = new \Instaxer\Request\Following($instaxer);
