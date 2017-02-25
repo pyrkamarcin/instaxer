@@ -31,28 +31,35 @@ class Instaxer
      */
     public $instagram;
 
+    public $restoredFromSession;
+
+    public $sessionFile;
+
     /**
      * Instaxer constructor.
-     * @param string $user
-     * @param string $password
      * @throws \Exception
      */
-    public function __construct(string $user, string $password)
+    public function __construct()
     {
         $this->instagram = new Instagram();
-
         $this->instagram->setVerifyPeer(false);
 
-        $restoredFromSession = FALSE;
-        $sessionFile = __DIR__ . '/../../session.dat';
-        if (is_file($sessionFile)) {
+        $this->restoredFromSession = FALSE;
+        $this->sessionFile = __DIR__ . '/../../session.dat';
+
+        $this->marker = 0;
+    }
+
+    public function login(string $user, string $password)
+    {
+        if (is_file($this->sessionFile)) {
             try {
-                $savedSession = file_get_contents($sessionFile);
+                $savedSession = file_get_contents($this->sessionFile);
                 if ($savedSession !== FALSE) {
                     $this->instagram->initFromSavedSession($savedSession);
                     $currentUser = $this->instagram->getCurrentUserAccount();
                     if ($currentUser->getUser()->getUsername() == $user) {
-                        $restoredFromSession = TRUE;
+                        $this->restoredFromSession = TRUE;
                     } else {
                     }
                 }
@@ -61,17 +68,15 @@ class Instaxer
             }
         }
 
-        if (!$restoredFromSession) {
+        if (!$this->restoredFromSession) {
             $this->instagram->login($user, $password);
             $savedSession = $this->instagram->saveSession();
 
-            $result = file_put_contents($sessionFile, $savedSession);
+            $result = file_put_contents($this->sessionFile, $savedSession);
             if (!$result) {
-                unlink($sessionFile);
+                unlink($this->sessionFile);
             }
         }
-
-        $this->marker = 0;
     }
 
     /**

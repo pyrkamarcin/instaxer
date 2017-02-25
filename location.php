@@ -5,7 +5,8 @@ require __DIR__ . '/config.php';
 
 try {
 
-    $instaxer = new \Instaxer\Instaxer($user1, $pass1);
+    $instaxer = new \Instaxer\Instaxer();
+    $instaxer->login($user1, $pass1);
 
     $locations = $instaxer->instagram->searchFacebookPlacesByLocation(53.431831, 14.553599);
 

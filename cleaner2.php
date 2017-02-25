@@ -5,10 +5,13 @@ require __DIR__ . '/config.php';
 
 try {
 
-    $instaxer = new \Instaxer\Instaxer($user1, $pass1);
+    $instaxer = new \Instaxer\Instaxer();
+    $instaxer->login($user1, $pass1);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
-    $following = $instaxer->getFollowing($account);
+
+    $following = new \Instaxer\Request\Following($instaxer);
+    $following = $following->getFollowing($account);
 
     echo 'Current count: ' . count($following) . "\r\n";
 
