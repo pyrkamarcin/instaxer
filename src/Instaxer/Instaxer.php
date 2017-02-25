@@ -32,6 +32,9 @@ class Instaxer
      */
     public $instagram;
 
+    /**
+     * @var Session
+     */
     public $session;
 
     /**
@@ -49,6 +52,10 @@ class Instaxer
         $this->marker = 0;
     }
 
+    /**
+     * @param string $user
+     * @param string $password
+     */
     public function login(string $user, string $password)
     {
         if ($this->session->checkExistsSessionFile()) {
