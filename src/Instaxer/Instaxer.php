@@ -4,6 +4,7 @@ namespace Instaxer;
 
 use Instagram\Instagram;
 use Instaxer\Domain\Model\ItemRepository;
+use Instaxer\Domain\Session;
 
 /**
  * Class Instaxer
@@ -31,9 +32,7 @@ class Instaxer
      */
     public $instagram;
 
-    public $restoredFromSession;
-
-    public $sessionFile;
+    public $session;
 
     /**
      * Instaxer constructor.
@@ -44,23 +43,22 @@ class Instaxer
         $this->instagram = new Instagram();
         $this->instagram->setVerifyPeer(false);
 
-        $this->restoredFromSession = FALSE;
-        $this->sessionFile = __DIR__ . '/../../session.dat';
 
+        $this->session = new Session(__DIR__ . '/../../session.dat');
+        $this->session->restoredFromSession = FALSE;
         $this->marker = 0;
     }
 
     public function login(string $user, string $password)
     {
-        if (is_file($this->sessionFile)) {
+        if ($this->session->checkExistsSessionFile()) {
             try {
-                $savedSession = file_get_contents($this->sessionFile);
+                $savedSession = $this->session->getSevedSession();
                 if ($savedSession !== FALSE) {
                     $this->instagram->initFromSavedSession($savedSession);
                     $currentUser = $this->instagram->getCurrentUserAccount();
                     if ($currentUser->getUser()->getUsername() == $user) {
-                        $this->restoredFromSession = TRUE;
-                    } else {
+                        $this->session->restoredFromSession = TRUE;
                     }
                 }
             } catch (\Exception $e) {
@@ -68,14 +66,10 @@ class Instaxer
             }
         }
 
-        if (!$this->restoredFromSession) {
+        if (!$this->session->restoredFromSession) {
             $this->instagram->login($user, $password);
             $savedSession = $this->instagram->saveSession();
-
-            $result = file_put_contents($this->sessionFile, $savedSession);
-            if (!$result) {
-                unlink($this->sessionFile);
-            }
+            $this->session->saveSession($savedSession);
         }
     }
 
