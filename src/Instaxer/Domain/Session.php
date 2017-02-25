@@ -1,7 +1,6 @@
 <?php
 
 namespace Instaxer\Domain;
-http://monoawards.com/winners-gallery/monochrome-awards-2016/amateur/nude/hm/4483
 
 /**
  * Class Session
