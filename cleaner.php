@@ -4,8 +4,9 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/config.php';
 
 try {
+    $path = __DIR__ . '/var/cache/instaxer/profiles/session.dat';
 
-    $instaxer = new \Instaxer\Instaxer();
+    $instaxer = new \Instaxer\Instaxer($path);
     $instaxer->login($user1, $pass1);
 
 

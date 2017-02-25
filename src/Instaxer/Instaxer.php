@@ -25,12 +25,12 @@ class Instaxer
      * Instaxer constructor.
      * @throws \Exception
      */
-    public function __construct()
+    public function __construct($sessionFilePath)
     {
         $this->instagram = new Instagram();
         $this->instagram->setVerifyPeer(false);
 
-        $this->session = new Session(__DIR__ . '/../../session.dat');
+        $this->session = new Session($sessionFilePath);
         $this->session->restoredFromSession = FALSE;
     }
 
