@@ -17,6 +17,7 @@ try {
     $whiteList = new \Instaxer\Domain\WhiteList(__DIR__ . '/whitelist.dat');
 
     echo 'Current count: ' . count($following) . "\r\n";
+    echo 'White list count: ' . $whiteList->count() . "\r\n";
 
     for ($c = 1; $c <= 200; $c++) {
 
