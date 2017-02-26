@@ -19,7 +19,7 @@ try {
     echo 'Current count: ' . count($following) . "\r\n";
     echo 'White list count: ' . $whiteList->count() . "\r\n";
 
-    for ($c = 1; $c <= 200; $c++) {
+    for ($c = 1; $c <= 250; $c++) {
 
 
         $profile = $following[random_int(0, count($following) - 1)];
@@ -37,6 +37,7 @@ try {
                 sleep(random_int(3, 7));
             } else {
 
+                echo $c . ": \t";
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ skip - too preaty ! ] ' . "\r\n";
 
 //            echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ stay ] ';
@@ -50,6 +51,7 @@ try {
 //            echo "\r\n";
             }
         } else {
+            echo $c . ": \t";
             echo $user->getUsername() . ' [ skip - whitelist member ] ' . "\r\n";
         }
     }
