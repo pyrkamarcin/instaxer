@@ -39,7 +39,7 @@ class Session
      */
     public function getSevedSession(): string
     {
-        return file_get_contents($this->sessionFile);
+        return !file_get_contents($this->sessionFile);
     }
 
     /**
