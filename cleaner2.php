@@ -36,6 +36,9 @@ try {
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
                 sleep(random_int(3, 7));
             } else {
+
+                echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ skip - too preaty ! ] ' . "\r\n";
+
 //            echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ stay ] ';
 //            $hashTagFeed = $instaxer->instagram->getUserFeed($user);
 //            $items = array_slice($hashTagFeed->getItems(), 0, random_int(1, 6));
@@ -47,7 +50,7 @@ try {
 //            echo "\r\n";
             }
         } else {
-            echo $user->getUsername() . ' [ whitelist skip ] ' . "\r\n";
+            echo $user->getUsername() . ' [ skip - whitelist member ] ' . "\r\n";
         }
     }
 
