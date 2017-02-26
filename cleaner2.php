@@ -46,6 +46,8 @@ try {
 //            }
 //            echo "\r\n";
             }
+        } else {
+            echo $user->getUsername() . ' [ whitelist skip ] ' . "\r\n";
         }
     }
 
