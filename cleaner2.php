@@ -25,11 +25,11 @@ try {
 
         $userMostImportantStat = $user->getFollowerCount();
 
-        if ($userMostImportantStat < 20000) {
+        if ($userMostImportantStat < 200) {
             echo $c . ": \t";
             $instaxer->instagram->unfollowUser($user);
             echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
-            sleep(random_int(0, 1));
+            sleep(random_int(3, 7));
         } else {
 //            echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ stay ] ';
 //            $hashTagFeed = $instaxer->instagram->getUserFeed($user);
