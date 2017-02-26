@@ -27,7 +27,7 @@ try {
 
         $userMostImportantStat = $user->getFollowerCount();
 
-        if ($whiteList->check($profile->getUserName())) {
+        if (!$whiteList->check($profile->getUserName())) {
 
             if ($userMostImportantStat < 200) {
                 echo $c . ": \t";
