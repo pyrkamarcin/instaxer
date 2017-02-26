@@ -34,7 +34,7 @@ class Border
     public function getListContent()
     {
         $file = file_get_contents($this->listFile);
-        $this->haystack = explode(';', $file);
+        $this->haystack = explode("\n", $file);
     }
 
     /**
