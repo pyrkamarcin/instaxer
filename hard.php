@@ -44,7 +44,7 @@ try {
                 $userMostImportantStat = $user->getFollowerCount();
 
 
-                if ($userMostImportantStat > 5000) {
+                if ($userMostImportantStat > 2500) {
                     echo $userMostImportantStat . ": \t";
 
                     $instation = new \Instation\Instation($array[1]['username'], $array[1]['password']);
