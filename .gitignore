@@ -1,11 +1,8 @@
 /.idea
 /vendor/
 /composer.lock
-/config.php
 /composer.phar
 /nohup.out
 /storage.tmp
 /session.dat
-/config/*
-!/config/.gitkeep
 /var/cache/instaxer/profiles/*.dat
