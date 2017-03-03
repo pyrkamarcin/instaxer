@@ -1,18 +1,18 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/jebthecat';
+require __DIR__ . '/config.php';
 
 try {
     $path = __DIR__ . '/var/cache/instaxer/profiles/session.dat';
 
     $instaxer = new \Instaxer\Instaxer($path);
-    $instaxer->login($user1, $pass1);
+    $instaxer->login($array[1]['username'], $array[1]['password']);
 
     $counter = 50;
     $long = 20;
 
-    $itemRepository = new \Instaxer\Domain\Model\ItemRepository($array);
+    $itemRepository = new \Instaxer\Domain\Model\ItemRepository($array[1]['tags']);
 
     for ($c = 0; $c < $counter; $c++) {
 

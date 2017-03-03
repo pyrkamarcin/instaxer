@@ -1,13 +1,13 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/jebthecat';
+require __DIR__ . '/config.php';
 
 try {
     $path = __DIR__ . '/var/cache/instaxer/profiles/session.dat';
 
     $instaxer = new \Instaxer\Instaxer($path);
-    $instaxer->login($user1, $pass1);
+    $instaxer->login($array[1]['username'], $array[1]['password']);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
 
