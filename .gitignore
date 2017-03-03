@@ -6,3 +6,4 @@
 /storage.tmp
 /session.dat
 /var/cache/instaxer/profiles/*.dat
+/config.php
