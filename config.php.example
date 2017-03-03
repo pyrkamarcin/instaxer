@@ -1,6 +1,8 @@
 <?php
 
-$user1 = '';
-$pass1 = '';
-
-$array = [];
+$array = [
+    1 => [
+        'username' => '',
+        'password' => '',
+        'tags' => []
+    ]];
