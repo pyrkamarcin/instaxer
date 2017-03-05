@@ -30,7 +30,7 @@ try {
 
         if (!$whiteList->check($profile->getUserName())) {
 
-            if ($userMostImportantStat < 3500) {
+            if ($userMostImportantStat < 20000) {
                 echo $c . ": \t";
                 $instaxer->instagram->unfollowUser($user);
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
