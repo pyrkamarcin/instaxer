@@ -19,6 +19,7 @@
     "symfony/console": "^3.2",
     "symfony/config": "^3.2",
     "phpmailer/phpmailer": "^5.2",
-    "pyrkamarcin/instation": "dev-master"
+    "phpunit/phpunit": "5.*",
+    "symfony/var-dumper": "^3.2"
   }
 }

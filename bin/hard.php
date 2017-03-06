@@ -1,10 +1,10 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/config.php';
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../config/config.php';
 
 try {
-    $path = __DIR__ . '/var/cache/instaxer/profiles/session.dat';
+    $path = __DIR__ . '/../var/cache/instaxer/profiles/session.dat';
 
     $instaxer = new \Instaxer\Instaxer($path);
     $instaxer->login($array[1]['username'], $array[1]['password']);
@@ -47,8 +47,8 @@ try {
                 if ($userMostImportantStat > 2500) {
                     echo $userMostImportantStat . ": \t";
 
-                    $instation = new \Instation\Instation($array[1]['username'], $array[1]['password']);
-                    $request = new \Instation\Bot\RepostPhoto($instation);
+                    $instation = new \Instaxer\Instation($array[1]['username'], $array[1]['password']);
+                    $request = new \Instaxer\Bot\RepostPhoto($instation);
                     $result = $request->exec($user->getUsername());
 
                     echo $user->getUsername() . ' jebło i to ostro' . "\r\n";

@@ -1,11 +1,7 @@
 <?php
 
-namespace Instation;
+namespace Instaxer;
 
-/**
- * Class Downloader
- * @package Instation
- */
 class Downloader
 {
     /**

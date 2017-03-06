@@ -1,10 +1,10 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/config.php';
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../config/config.php';
 
 try {
-    $path = __DIR__ . '/var/cache/instaxer/profiles/session.dat';
+    $path = __DIR__ . '/../var/cache/instaxer/profiles/session.dat';
 
     $instaxer = new \Instaxer\Instaxer($path);
     $instaxer->login($array[1]['username'], $array[1]['password']);

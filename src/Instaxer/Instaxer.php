@@ -37,16 +37,18 @@ class Instaxer
     /**
      * @param string $user
      * @param string $password
+     * @throws \Exception
      */
     public function login(string $user, string $password)
     {
         if ($this->session->checkExistsSessionFile()) {
             try {
                 $savedSession = $this->session->getSevedSession();
+
                 if ($savedSession !== FALSE) {
                     $this->instagram->initFromSavedSession($savedSession);
                     $currentUser = $this->instagram->getCurrentUserAccount();
-                    if ($currentUser->getUser()->getUsername() == $user) {
+                    if ($currentUser->getUser()->getUsername() === $user) {
                         $this->session->restoredFromSession = TRUE;
                     }
                 }
