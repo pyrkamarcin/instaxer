@@ -43,9 +43,11 @@ try {
                 echo sprintf('[liked] ');
             }
 
-            sleep(random_int(2, 5));
+            sleep(random_int(10, 15));
             echo sprintf("\r\n");
         }
+
+        sleep(random_int(1, 5));
     }
 
 } catch (Exception $e) {
