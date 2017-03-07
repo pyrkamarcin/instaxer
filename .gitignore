@@ -12,3 +12,6 @@
 /nohup.1.txt
 /var/logs/dev.log
 /app/data.db3
+/var/cache/dev/
+/var/cache/instaxer/
+/var/bootstrap.php.cache
