@@ -9,7 +9,7 @@ try {
     $instaxer = new \Instaxer\Instaxer($path);
     $instaxer->login($array[1]['username'], $array[1]['password']);
 
-    $counter = 50;
+    $counter = 5;
     $long = 20;
 
     $itemRepository = new \Instaxer\Domain\Model\ItemRepository($array[1]['tags']);

@@ -8,3 +8,4 @@
 /var/cache/instaxer/profiles/*.dat
 /config/config.php
 /app/storage/test.jpg
+/app/config/parameters.yml
