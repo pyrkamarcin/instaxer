@@ -22,7 +22,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Monotype\Bundle\TransportLayerBundle\MonotypeTransportLayerBundle(),
-            new Cron\CronBundle\CronCronBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
