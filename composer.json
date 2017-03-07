@@ -42,7 +42,8 @@
     "phpspec/php-diff": "1.1.*",
     "liamcottle/instagram-sdk-php": "^1.0",
     "phpmailer/phpmailer": "^5.2",
-    "phpunit/phpunit": "5.*"
+    "phpunit/phpunit": "5.*",
+    "cron/cron-bundle": "^1.1"
   },
   "require-dev": {
     "sensio/generator-bundle": "3.*",

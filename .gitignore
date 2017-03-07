@@ -11,3 +11,4 @@
 /app/config/parameters.yml
 /nohup.1.txt
 /var/logs/dev.log
+/app/data.db3
