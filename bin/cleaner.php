@@ -9,7 +9,7 @@ try {
     $instaxer = new \Instaxer\Instaxer($path);
     $instaxer->login($array[1]['username'], $array[1]['password']);
 
-    $file = file_get_contents(__DIR__ . '/storage.tmp');
+    $file = file_get_contents('storage.tmp');
     $haystack = explode(';', $file);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
@@ -31,7 +31,7 @@ try {
                 echo ' Clean: ' . $username . "\r\n";
             }
 
-            $file = file_get_contents(__DIR__ . '/storage.tmp');
+            $file = file_get_contents('storage.tmp');
             $newFile = str_replace($username . ';', '', $file);
             file_put_contents('storage.tmp', $newFile, LOCK_EX);
             sleep(1, 6);
