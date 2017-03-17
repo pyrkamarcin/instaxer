@@ -34,7 +34,7 @@ try {
             $file = file_get_contents('storage.tmp');
             $newFile = str_replace($username . ';', '', $file);
             file_put_contents('storage.tmp', $newFile, LOCK_EX);
-            sleep(1, 6);
+            sleep(random_int(1, 6));
         }
     }
 

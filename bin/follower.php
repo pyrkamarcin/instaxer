@@ -41,7 +41,7 @@ try {
                 echo $user->getUsername() . ' nie obserwuje mnie' . "\r\n";
                 $instaxer->instagram->followUser($user);
                 file_put_contents('storage.tmp', $user->getUsername() . ';', FILE_APPEND);
-                sleep(5);
+                sleep(random_int(10, 20));
             }
         }
     }
