@@ -6,7 +6,7 @@ class TagFeedTest extends PHPUnit_Framework_TestCase
     {
         $path = __DIR__ . '/../../../var/cache/instaxer/profiles/session.dat';
         $instaxer = new \Instaxer\Instaxer($path);
-        $instaxer->login('katase5522', 'katase@gamgling.com');
+        $instaxer->login('vodefgafy', 'vodef@gafy.net');
 
         $tag = 'instagram';
         $request = new \Instaxer\Request\TagFeed($instaxer);

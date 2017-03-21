@@ -8,7 +8,7 @@ class PublishPhotoTest extends PHPUnit_Framework_TestCase
     {
         $path = __DIR__ . '/../../../var/cache/instaxer/profiles/session.dat';
         $instaxer = new \Instaxer\Instaxer($path);
-        $instaxer->login('katase5522', 'katase@gamgling.com');
+        $instaxer->login('vodefgafy', 'vodef@gafy.net');
 
         $request = new PublishPhoto($instaxer);
         $result = $request->pull(__DIR__ . '/test.jpg', 'test');
