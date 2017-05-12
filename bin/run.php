@@ -9,8 +9,8 @@ try {
     $instaxer = new \Instaxer\Instaxer($path);
     $instaxer->login($array[1]['username'], $array[1]['password']);
 
-    $counter = 5;
-    $long = 20;
+    $counter = 50;
+    $long = 5;
 
     $itemRepository = new \Instaxer\Domain\Model\ItemRepository($array[1]['tags']);
 
@@ -47,7 +47,7 @@ try {
             echo sprintf("\r\n");
         }
 
-        sleep(random_int(1, 5));
+        sleep(random_int(1, 15));
     }
 
 } catch (Exception $e) {
