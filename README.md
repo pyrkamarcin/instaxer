@@ -17,7 +17,7 @@ cp config.php.example config.php
 ## Run
 
 ```
-php run.php
+php bin/run.php
 ```
 
 ## Legal
