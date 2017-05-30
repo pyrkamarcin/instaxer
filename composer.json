@@ -15,11 +15,10 @@
     }
   },
   "require": {
-    "mockery/mockery": "^0.9",
-    "phpspec/php-diff": "1.1.*",
-    "liamcottle/instagram-sdk-php": "^1.0",
-    "phpmailer/phpmailer": "^5.2",
-    "phpunit/phpunit": "5.*"
+    "mockery/mockery": "^0.9.9",
+    "phpspec/php-diff": "^1.1.0",
+    "liamcottle/instagram-sdk-php": "^1.0.4",
+    "phpunit/phpunit": "^5.7.20"
   },
   "config": {
     "platform": {
