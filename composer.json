@@ -18,7 +18,8 @@
     "mockery/mockery": "^0.9.9",
     "phpspec/php-diff": "^1.1.0",
     "liamcottle/instagram-sdk-php": "^1.0.4",
-    "phpunit/phpunit": "^5.7.20"
+    "phpunit/phpunit": "^5.7.20",
+    "php-ai/php-ml": "^0.4.1"
   },
   "config": {
     "platform": {
