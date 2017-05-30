@@ -11,8 +11,6 @@ try {
 
     $user = $instaxer->instagram->getUserByUsername('__siwiec');
 
-    dump($user);
-
 
 //    $counter = 5;
 //    $long = 20;
