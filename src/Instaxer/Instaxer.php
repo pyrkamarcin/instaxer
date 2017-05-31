@@ -22,7 +22,6 @@ class Instaxer
     public $session;
 
     /**
-     * Instaxer constructor.
      * @param $sessionFilePath
      */
     public function __construct($sessionFilePath)
