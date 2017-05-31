@@ -16,3 +16,4 @@
 /var/cache/instaxer/
 /var/bootstrap.php.cache
 /bin/symfony_requirements
+tests/coverage/
