@@ -7,20 +7,19 @@ try {
     $path = __DIR__ . '/../var/cache/instaxer/profiles/session.dat';
 
     $instaxer = new \Instaxer\Instaxer($path);
-    $instaxer->login($array[1]['username'], $array[1]['password']);
+    $instaxer->login($array[$argv[1]]['username'], $array[$argv[1]]['password']);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
 
     $following = new \Instaxer\Request\Following($instaxer);
     $following = $following->getFollowing($account);
 
-    $whiteList = new \Instaxer\Domain\WhiteList(__DIR__ . '/whitelist.dat');
+    $whiteList = new \Instaxer\Domain\WhiteList(__DIR__ . '/../whitelist.dat');
 
     echo 'Current count: ' . count($following) . "\r\n";
     echo 'White list count: ' . $whiteList->count() . "\r\n";
 
-    for ($c = 1; $c <= 2000; $c++) {
-
+    for ($c = 1; $c <= 1000; $c++) {
 
         $profile = $following[random_int(0, count($following) - 1)];
 
@@ -30,7 +29,7 @@ try {
 
         if (!$whiteList->check($profile->getUserName())) {
 
-            if ($userMostImportantStat < 50000) {
+            if ($userMostImportantStat < 10000) {
                 echo $c . ": \t";
                 $instaxer->instagram->unfollowUser($user);
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
@@ -41,7 +40,7 @@ try {
                 echo $c . ": \t";
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ skip - too preaty ! ] ' . "\r\n";
 
-                sleep(random_int(2, 6));
+                sleep(random_int(2, 16));
             }
         } else {
             echo $c . ": \t";
