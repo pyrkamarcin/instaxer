@@ -10,5 +10,4 @@ class InstaxerTest extends PHPUnit_Framework_TestCase
 
         $this->assertEquals('APITESTUSER', $instaxer->instagram->getLoggedInUser()->getFullName());
     }
-
 }
