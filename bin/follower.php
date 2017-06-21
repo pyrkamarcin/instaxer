@@ -18,30 +18,33 @@ try {
     $followers = $followers->getFollowers($account);
 
     $itemRepository = new \Instaxer\Domain\Model\ItemRepository($array[1]['tags']);
-    $item = $itemRepository->getRandomItem();
-    $hashTagFeed = $instaxer->instagram->getTagFeed($item->getItem());
 
-    $elements = $hashTagFeed->getItems();
+    while (true) {
+        $item = $itemRepository->getRandomItem();
+        $hashTagFeed = $instaxer->instagram->getTagFeed($item->getItem());
 
-    foreach ($elements as $hashTagFeedItem) {
-        $id = $hashTagFeedItem->getId();
-        $user = $instaxer->instagram->getUserInfo($hashTagFeedItem->getUser())->getUser();
+        $elements = $hashTagFeed->getItems();
 
-        $userFollow = false;
+        foreach ($elements as $hashTagFeedItem) {
+            $id = $hashTagFeedItem->getId();
+            $user = $instaxer->instagram->getUserInfo($hashTagFeedItem->getUser())->getUser();
 
-        foreach ($following as $followingUser) {
-            if ($followingUser->getUsername() === $user->getUsername()) {
-                $userFollow = true;
+            $userFollow = false;
+
+            foreach ($following as $followingUser) {
+                if ($followingUser->getUsername() === $user->getUsername()) {
+                    $userFollow = true;
+                }
             }
-        }
-        $file = file_get_contents('storage.tmp');
-        $haystack = explode(';', $file);
-        if (!in_array($user->getUsername(), $haystack, true)) {
-            if ($userFollow !== true) {
-                echo $user->getUsername() . ' nie obserwuje mnie' . "\r\n";
-                $instaxer->instagram->followUser($user);
-                file_put_contents('storage.tmp', $user->getUsername() . ';', FILE_APPEND);
-                sleep(random_int(1, 8));
+            $file = file_get_contents('storage.tmp');
+            $haystack = explode(';', $file);
+            if (!in_array($user->getUsername(), $haystack, true)) {
+                if ($userFollow !== true) {
+                    echo $user->getUsername() . ' nie obserwuje mnie' . "\r\n";
+                    $instaxer->instagram->followUser($user);
+                    file_put_contents('storage.tmp', $user->getUsername() . ';', FILE_APPEND);
+                    sleep(random_int(1, 8));
+                }
             }
         }
     }

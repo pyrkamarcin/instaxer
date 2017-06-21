@@ -30,10 +30,10 @@ try {
             $instaxer->instagram->likeMedia($hashTagFeedItem->getID());
             echo sprintf('[liked] ');
 
-            sleep(random_int(2, 5));
+            sleep(random_int(10, 20));
             echo sprintf("\r\n");
         }
-        sleep(random_int(2, 5));
+        sleep(random_int(10, 20));
     }
 
 } catch (Exception $e) {
