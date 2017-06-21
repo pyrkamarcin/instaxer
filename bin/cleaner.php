@@ -38,7 +38,9 @@ try {
         }
     }
 
-    if (file_exists('storage.tmp')) @unlink('storage.tmp');
+    if (file_exists('storage.tmp')) {
+        @unlink('storage.tmp');
+    }
 
 
 } catch (Exception $e) {

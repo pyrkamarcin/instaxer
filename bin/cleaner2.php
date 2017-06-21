@@ -34,13 +34,13 @@ try {
                 $instaxer->instagram->unfollowUser($user);
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
 
-                sleep(random_int(13, 14));
+                sleep(random_int(1, 5));
             } else {
 
                 echo $c . ": \t";
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ skip - too preaty ! ] ' . "\r\n";
 
-                sleep(random_int(2, 16));
+                sleep(random_int(1, 5));
             }
         } else {
             echo $c . ": \t";
