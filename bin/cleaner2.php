@@ -19,7 +19,7 @@ try {
     echo 'Current count: ' . count($following) . "\r\n";
     echo 'White list count: ' . $whiteList->count() . "\r\n";
 
-    for ($c = 1; $c <= 1000; $c++) {
+    for ($c = 1; $c <= 2000; $c++) {
 
         $profile = $following[random_int(0, count($following) - 1)];
 
@@ -29,18 +29,18 @@ try {
 
         if (!$whiteList->check($profile->getUserName())) {
 
-            if ($userMostImportantStat < 10000) {
+            if ($userMostImportantStat < 200000) {
                 echo $c . ": \t";
                 $instaxer->instagram->unfollowUser($user);
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";
 
-                sleep(random_int(1, 5));
+                sleep(random_int(1, 2));
             } else {
 
                 echo $c . ": \t";
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ skip - too preaty ! ] ' . "\r\n";
 
-                sleep(random_int(1, 5));
+                sleep(random_int(1, 2));
             }
         } else {
             echo $c . ": \t";
