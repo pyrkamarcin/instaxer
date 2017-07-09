@@ -19,9 +19,9 @@ try {
     echo 'Current count: ' . count($following) . "\r\n";
     echo 'White list count: ' . $whiteList->count() . "\r\n";
 
-    for ($c = 1; $c <= 2000; $c++) {
+    for ($c = 0; $c <= 2000; $c++) {
 
-        $profile = $following[random_int(0, count($following) - 1)];
+        $profile = $following[$c];
 
         $user = $instaxer->instagram->getUserByUsername($profile->getUserName());
 
