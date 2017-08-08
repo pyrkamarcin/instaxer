@@ -24,31 +24,30 @@ try {
 
     foreach ($userFeed->getItems() as $item) {
 
-        dump($item->getLikeCount());
-
-        if ($item->getLikeCount() > $avrg * 1.2) {
+        if ($item->getLikeCount() > $avrg) {
 
             $image = $item->getImageVersions2()->getCandidates();
             $downloader = new \Instaxer\Downloader();
             $downloader->drain($image[0]->getUrl());
             $requestPublishPhoto = new Instaxer\Request\PublishPhoto($instaxer);
 
-
-            dump($item);
-
             $text = null;
             if ($item->getCaption()->getText()) {
                 $text = $item->getCaption()->getText();
             }
 
-            dump($requestPublishPhoto
+            $response = $requestPublishPhoto
                 ->pull(
-                    __DIR__ . '/../app/storage/test.jpg',
-                    'Repost from: @' . $userName . '. ' . "\r\n" .
-                    $text
-                )
-            );
+                    __DIR__ . '/../app/storage/test.jpg', ''
 
+                );
+
+            dump($response);
+            sleep(random_int(5, 15));
+
+            $editResponse = $instaxer->instagram->editMedia($response->getMedia()->getId(), 'Repost from: @' . $userName . '. ' . "\r\n" . $text);
+
+            dump($editResponse);
             sleep(random_int(5, 15));
         }
     }
