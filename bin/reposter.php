@@ -9,7 +9,7 @@ try {
     $instaxer = new \Instaxer\Instaxer($path);
     $instaxer->login($array[1]['username'], $array[1]['password']);
 
-    $userName = 'weronikasochacz';
+    $userName = $argv[1];
 
     $account = $instaxer->instagram->getUserByUsername($userName);
     $userFeed = $instaxer->instagram->getUserFeed($account);
@@ -26,7 +26,7 @@ try {
 
         dump($item->getLikeCount());
 
-        if ($item->getLikeCount() > $avrg * 0.8) {
+        if ($item->getLikeCount() > $avrg * 1.15) {
 
             $image = $item->getImageVersions2()->getCandidates();
             $downloader = new \Instaxer\Downloader();
