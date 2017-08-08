@@ -24,7 +24,7 @@ try {
 
     foreach ($userFeed->getItems() as $item) {
 
-        if ($item->getLikeCount() > $avrg) {
+        if ($item->getLikeCount() > $avrg * 1.35) {
 
             $image = $item->getImageVersions2()->getCandidates();
             $downloader = new \Instaxer\Downloader();
@@ -35,6 +35,8 @@ try {
             if ($item->getCaption()->getText()) {
                 $text = $item->getCaption()->getText();
             }
+
+            $text = str_replace('@', '', $text);
 
             $response = $requestPublishPhoto
                 ->pull(
