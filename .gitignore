@@ -17,3 +17,4 @@
 /var/bootstrap.php.cache
 /bin/symfony_requirements
 tests/coverage/
+/test.json
