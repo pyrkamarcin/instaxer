@@ -17,40 +17,30 @@ try {
     $sumArray = 0;
 
     foreach ($userFeed->getItems() as $item) {
-        $sumArray += $item->getLikeCount();
-    }
-
-    $avrg = $sumArray / count($userFeed->getItems());
-
-    foreach ($userFeed->getItems() as $item) {
-
-        dump($item->getLikeCount());
-
-        if ($item->getLikeCount() > $avrg * 0.75) {
-
-            $image = $item->getImageVersions2()->getCandidates();
-            $downloader = new \Instaxer\Downloader();
-            $downloader->drain($image[0]->getUrl());
-            $requestPublishPhoto = new Instaxer\Request\PublishPhoto($instaxer);
 
 
-            dump($item);
+        $image = $item->getImageVersions2()->getCandidates();
+        $downloader = new \Instaxer\Downloader();
+        $downloader->drain($image[0]->getUrl());
+        $requestPublishPhoto = new Instaxer\Request\PublishPhoto($instaxer);
 
-            $text = null;
-            if ($item->getCaption()) {
-                $text = $item->getCaption()->getText();
-            }
 
-            dump($requestPublishPhoto
-                ->pull(
-                    __DIR__ . '/../app/storage/test.jpg',
-                    'Repost from: @' . $userName . '. ' . "\r\n" .
-                    $text
-                )
-            );
+        dump($item);
 
-            sleep(random_int(5, 15));
+        $text = null;
+        if ($item->getCaption()) {
+            $text = $item->getCaption()->getText();
         }
+
+        dump($requestPublishPhoto
+            ->pull(
+                __DIR__ . '/../app/storage/test.jpg',
+                'Repost from: @' . $userName . '. ' . "\r\n" .
+                $text
+            )
+        );
+
+        sleep(random_int(5, 15));
     }
 
 } catch (Exception $e) {
