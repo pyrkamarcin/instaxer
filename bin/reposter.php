@@ -26,7 +26,7 @@ try {
 
         dump($item->getLikeCount());
 
-        if ($item->getLikeCount() > $avrg * 0.90) {
+        if ($item->getLikeCount() > $avrg * 0.50) {
 
             $image = $item->getImageVersions2()->getCandidates();
             $downloader = new \Instaxer\Downloader();
