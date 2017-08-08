@@ -19,6 +19,7 @@
     "phpspec/php-diff": "^1.1.0",
     "liamcottle/instagram-sdk-php": "^1.0.4",
     "phpunit/phpunit": "^5.7.20",
+    "symfony/var-dumper": "3.3.*",
     "php-ai/php-ml": "^0.4.1"
   },
   "config": {
