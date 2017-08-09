@@ -47,7 +47,7 @@ try {
             dump($response);
             sleep(random_int(5, 15));
 
-            $editResponse = $instaxer->instagram->editMedia($response->getMedia()->getId(), 'Repost from: ' . $userName . '. ' . "\r\n" . $text);
+            $editResponse = $instaxer->instagram->editMedia($response->getMedia()->getId(), 'Repost from: @ ' . $userName . '. ' . "\r\n" . $text);
 
             dump($editResponse);
             sleep(random_int(5, 15));
