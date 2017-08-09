@@ -44,7 +44,6 @@ try {
 
                 );
 
-            dump($response);
             sleep(random_int(1, 2));
 
             $editResponse = $instaxer
@@ -54,7 +53,6 @@ try {
                     'Repost from: @ ' . $userName . '. ' . "\r\n" . $text
                 );
 
-            dump($editResponse);
             sleep(random_int(1, 2));
         }
     }
