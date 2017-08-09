@@ -24,7 +24,7 @@ try {
 
     foreach ($userFeed->getItems() as $item) {
 
-        if ($item->getLikeCount() > $avrg * 1.35) {
+        if ($item->getLikeCount() > $avrg * 1.01) {
 
             $image = $item->getImageVersions2()->getCandidates();
             $downloader = new \Instaxer\Downloader();
@@ -45,12 +45,12 @@ try {
                 );
 
             dump($response);
-            sleep(random_int(5, 15));
+            sleep(random_int(1, 2));
 
             $editResponse = $instaxer->instagram->editMedia($response->getMedia()->getId(), 'Repost from: @ ' . $userName . '. ' . "\r\n" . $text);
 
             dump($editResponse);
-            sleep(random_int(5, 15));
+            sleep(random_int(1, 2));
         }
     }
 
