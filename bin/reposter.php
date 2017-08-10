@@ -50,7 +50,7 @@ try {
                 ->instagram
                 ->editMedia(
                     $response->getMedia()->getId(),
-                    'Repost from: @ ' . $userName . '. ' . "\r\n" . $text
+                    'Repost from: @' . $userName . '. ' . "\r\n" . $text
                 );
 
             sleep(random_int(1, 2));

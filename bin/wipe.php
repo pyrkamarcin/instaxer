@@ -15,7 +15,6 @@ try {
 
     foreach ($userFeed->getItems() as $item) {
         $instaxer->instagram->deleteMedia($item, $item->getMediaType());
-        echo $item->getCaption()->getText();
         echo "\r\n";
     }
 
