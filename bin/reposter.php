@@ -24,7 +24,7 @@ try {
 
     foreach ($userFeed->getItems() as $item) {
 
-        if ($item->getLikeCount() > $avrg * 1.2) {
+        if ($item->getLikeCount() > $avrg * 0.99) {
 
             $image = $item->getImageVersions2()->getCandidates();
             $downloader = new \Instaxer\Downloader();
