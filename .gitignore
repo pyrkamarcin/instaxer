@@ -7,7 +7,7 @@
 /session.dat
 /var/cache/instaxer/profiles/*.dat
 /config/config.php
-/app/storage/test.jpg
+/app/storage/*.jpg
 /app/config/parameters.yml
 /nohup.1.txt
 /var/logs/dev.log
