@@ -13,9 +13,18 @@ try {
 
     $userFeed = $instaxer->instagram->getUserFeed($account);
 
-    foreach ($userFeed->getItems() as $item) {
-        $instaxer->instagram->deleteMedia($item, $item->getMediaType());
-        echo "\r\n";
+    foreach (array_reverse($userFeed->getItems()) as $item) {
+
+        if ($item->getLikeCount() <= 10) {
+            $instaxer->instagram->deleteMedia($item, $item->getMediaType());
+            echo $item->getLikeCount() . ' ' . $item->getCommentCount();
+            echo "\r\n";
+
+            sleep(10);
+        } else {
+            echo 'skip: ' . $item->getLikeCount() . ' ' . $item->getCommentCount();
+            echo "\r\n";
+        }
     }
 
 } catch (Exception $e) {
