@@ -24,7 +24,7 @@ try {
 
     foreach ($userFeed->getItems() as $item) {
 
-        if ($item->getLikeCount() > $avrg * 0.5) {
+        if ($item->getLikeCount() > $avrg * 1.5) {
 
             $image = $item->getImageVersions2()->getCandidates();
             $downloader = new \Instaxer\Downloader();
@@ -50,7 +50,7 @@ try {
                 ->instagram
                 ->editMedia(
                     $response->getMedia()->getId(),
-                    'Repost from: @' . $userName . '. ' . "\r\n" . $text
+                    '#portrait #beauty #portrait_perfection #mood #excellent_portraits #portraitpage #excellent_portraits #love #moodportrait #simple #bw #bwmasters #bwphoto #fitnessapparel #fitnessfun #fitnessforlife #fitnessguru #fitnessphysique #fitnesslover #fitnesstips #fitnessworld #fitnessfreaks #fitnesstime #fitnesslove #fitnessaddicted #fitnesstrainer #fitnesschick '
                 );
 
             sleep(random_int(1, 2));
