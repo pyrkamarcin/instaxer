@@ -1,8 +1,8 @@
 {
   "name": "pyrkamarcin/instaxer",
-  "description": "Small script to test Instagram PHP SDK libray.",
+  "description": "",
   "minimum-stability": "stable",
-  "license": "MIT",
+  "license": "proprietary",
   "authors": [
     {
       "name": "Marcin Pyrka",
@@ -15,12 +15,14 @@
     }
   },
   "require": {
-    "mockery/mockery": "^0.9.9",
     "phpspec/php-diff": "^1.1.0",
     "liamcottle/instagram-sdk-php": "^1.0.4",
-    "phpunit/phpunit": "^6.3.0",
-    "symfony/var-dumper": "3.3.*",
+    "symfony/symfony": "^3.3.6",
     "php-ai/php-ml": "^0.4.1"
+  },
+  "require-dev": {
+    "mockery/mockery": "^0.9.9",
+    "phpunit/phpunit": "^6.3.0"
   },
   "config": {
     "platform": {

@@ -1,23 +1,33 @@
 <?php
 
+use Instaxer\Domain\Model\ItemRepository;
+use Instaxer\Instaxer;
+use Instaxer\Request\Followers;
+use Instaxer\Request\Following;
+use Symfony\Component\Filesystem\Filesystem;
+
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/config.php';
 
 try {
-    $path = __DIR__ . '/var/cache/instaxer/profiles/' . $array[$argv[1]]['username'] . '.dat';
+    $pathDir = __DIR__ . '/../var/cache/instaxer/profiles/';
+    $path = $pathDir . $array[$argv[1]]['username'] . '.dat';
 
-    $instaxer = new \Instaxer\Instaxer($path);
+    $fs = new Filesystem();
+    $fs->mkdir($pathDir);
+
+    $instaxer = new Instaxer($path);
     $instaxer->login($array[$argv[1]]['username'], $array[$argv[1]]['password']);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
 
-    $following = new \Instaxer\Request\Following($instaxer);
-    $followers = new \Instaxer\Request\Followers($instaxer);
-
+    $following = new Following($instaxer);
     $following = $following->getFollowing($account);
+
+    $followers = new Followers($instaxer);
     $followers = $followers->getFollowers($account);
 
-    $itemRepository = new \Instaxer\Domain\Model\ItemRepository($array[$argv[1]]['tags']);
+    $itemRepository = new ItemRepository($array[$argv[1]]['tags']);
 
     while (true) {
         for ($c = 0; $c < 5; $c++) {
@@ -44,7 +54,7 @@ try {
                         echo $user->getUsername() . ' nie obserwuje mnie' . "\r\n";
                         $instaxer->instagram->followUser($user);
                         file_put_contents('storage.tmp', $user->getUsername() . ';', FILE_APPEND);
-                        sleep(random_int(10, 40));
+                        sleep(random_int(1, 5));
                     }
                 }
             }
