@@ -18,3 +18,4 @@
 /bin/symfony_requirements
 tests/coverage/
 /test.json
+/storage/*.tmp

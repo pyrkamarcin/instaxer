@@ -29,7 +29,7 @@ try {
 
     $itemRepository = new ItemRepository($array[$argv[1]]['tags']);
 
-    while (true) {
+    for ($a = 0; $a < 10; $a++) {
         for ($c = 0; $c < 5; $c++) {
             $item = $itemRepository->getRandomItem();
             $hashTagFeed = $instaxer->instagram->getTagFeed($item->getItem());
@@ -47,13 +47,13 @@ try {
                         $userFollow = true;
                     }
                 }
-                $file = file_get_contents('storage.tmp');
+                $file = file_get_contents(__DIR__ . '/../storage/' . $array[$argv[1]]['username'] . '.tmp');
                 $haystack = explode(';', $file);
                 if (!in_array($user->getUsername(), $haystack, true)) {
                     if ($userFollow !== true) {
                         echo $user->getUsername() . ' nie obserwuje mnie' . "\r\n";
                         $instaxer->instagram->followUser($user);
-                        file_put_contents('storage.tmp', $user->getUsername() . ';', FILE_APPEND);
+                        file_put_contents(__DIR__ . '/../storage/' . $array[$argv[1]]['username'] . '.tmp', $user->getUsername() . ';', FILE_APPEND);
                         sleep(random_int(1, 5));
                     }
                 }
