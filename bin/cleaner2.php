@@ -4,24 +4,24 @@ require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/config.php';
 
 try {
-    $path = __DIR__ . '/../var/cache/instaxer/profiles/session.dat';
+    $path = __DIR__ . '/var/cache/instaxer/profiles/' . $array[$argv[1]]['username'] . '.dat';
 
     $instaxer = new \Instaxer\Instaxer($path);
     $instaxer->login($array[$argv[1]]['username'], $array[$argv[1]]['password']);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
 
-    $following = new \Instaxer\Request\Following($instaxer);
-    $following = $following->getFollowing($account);
+    $followers = new \Instaxer\Request\Followers($instaxer);
+    $followers = $followers->getFollowers($account);
 
     $whiteList = new \Instaxer\Domain\WhiteList(__DIR__ . '/../whitelist.dat');
 
-    echo 'Current count: ' . count($following) . "\r\n";
+    echo 'Current count: ' . count($followers) . "\r\n";
     echo 'White list count: ' . $whiteList->count() . "\r\n";
 
-    for ($c = 0; $c <= 2000; $c++) {
+    for ($c = 0; $c <= 200; $c++) {
 
-        $profile = $following[$c];
+        $profile = $followers[$c];
 
         $user = $instaxer->instagram->getUserByUsername($profile->getUserName());
 
@@ -29,7 +29,7 @@ try {
 
         if (!$whiteList->check($profile->getUserName())) {
 
-            if ($userMostImportantStat < 1000) {
+            if ($userMostImportantStat < 100000) {
                 echo $c . ": \t";
                 $instaxer->instagram->unfollowUser($user);
                 echo $user->getUsername() . ' ' . $userMostImportantStat . ' [ out ] ' . "\r\n";

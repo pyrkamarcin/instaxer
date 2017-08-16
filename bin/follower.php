@@ -4,10 +4,10 @@ require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/config.php';
 
 try {
-    $path = __DIR__ . '/../var/cache/instaxer/profiles/session.dat';
+    $path = __DIR__ . '/var/cache/instaxer/profiles/' . $array[$argv[1]]['username'] . '.dat';
 
     $instaxer = new \Instaxer\Instaxer($path);
-    $instaxer->login($array[1]['username'], $array[1]['password']);
+    $instaxer->login($array[$argv[1]]['username'], $array[$argv[1]]['password']);
 
     $account = $instaxer->instagram->getCurrentUserAccount()->getUser();
 
@@ -17,7 +17,7 @@ try {
     $following = $following->getFollowing($account);
     $followers = $followers->getFollowers($account);
 
-    $itemRepository = new \Instaxer\Domain\Model\ItemRepository($array[1]['tags']);
+    $itemRepository = new \Instaxer\Domain\Model\ItemRepository($array[$argv[1]]['tags']);
 
     while (true) {
         for ($c = 0; $c < 5; $c++) {

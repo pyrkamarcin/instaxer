@@ -4,12 +4,12 @@ require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/config.php';
 
 try {
-    $path = __DIR__ . '/../var/cache/instaxer/profiles/session.dat';
+    $path = __DIR__ . '/var/cache/instaxer/profiles/' . $array[$argv[1]]['username'] . '.dat';
 
     $instaxer = new \Instaxer\Instaxer($path);
-    $instaxer->login($array[1]['username'], $array[1]['password']);
+    $instaxer->login($array[$argv[1]]['username'], $array[$argv[1]]['password']);
 
-    $userName = $argv[1];
+    $userName = $argv[2];
 
     $account = $instaxer->instagram->getUserByUsername($userName);
     $userFeed = $instaxer->instagram->getUserFeed($account);

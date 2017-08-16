@@ -4,7 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/../config/config.php';
 
 try {
-    $path = __DIR__ . '/../var/cache/instaxer/profiles/session.dat';
+    $path = __DIR__ . '/var/cache/instaxer/profiles/' . $array[$argv[1]]['username'] . '.dat';
 
     $instaxer = new \Instaxer\Instaxer($path);
     $instaxer->login($array[1]['username'], $array[1]['password']);
@@ -15,7 +15,7 @@ try {
 
     foreach (array_reverse($userFeed->getItems()) as $item) {
 
-        if ($item->getLikeCount() <= 10) {
+        if ($item->getLikeCount() <= 100) {
             $instaxer->instagram->deleteMedia($item, $item->getMediaType());
             echo $item->getLikeCount() . ' ' . $item->getCommentCount();
             echo "\r\n";
