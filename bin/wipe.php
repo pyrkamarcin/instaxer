@@ -15,7 +15,7 @@ try {
 
     foreach (array_reverse($userFeed->getItems()) as $item) {
 
-        if ($item->getLikeCount() <= 100) {
+        if ($item->getLikeCount() <= 100000) {
             $instaxer->instagram->deleteMedia($item, $item->getMediaType());
             echo $item->getLikeCount() . ' ' . $item->getCommentCount();
             echo "\r\n";
